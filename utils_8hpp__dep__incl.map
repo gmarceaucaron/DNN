@@ -1,0 +1,10 @@
+<map id="utils.hpp" name="utils.hpp">
+<area shape="rect" id="node2" href="$conv__fd_test_8cpp.html" title="main function for testing backpropagation for convolutional neural networks " alt="" coords="5,229,124,256"/>
+<area shape="rect" id="node3" href="$utils__conv_8hpp_source.html" title="utils_conv.hpp" alt="" coords="123,80,230,107"/>
+<area shape="rect" id="node4" href="$nn__ops__conv_8hpp.html" title="Implementation of the functions required for convolutional neural networks. " alt="" coords="103,155,227,181"/>
+<area shape="rect" id="node5" href="$convnet_8cpp.html" title="main function for launching experiments with convolutional neural networks " alt="" coords="218,229,311,256"/>
+<area shape="rect" id="node6" href="$nn__ops_8hpp.html" title="Implementation of the functions required for neural networks. " alt="" coords="255,80,344,107"/>
+<area shape="rect" id="node7" href="$riemann_8cpp.html" title="main function for launching experiments with neural networks " alt="" coords="302,155,395,181"/>
+<area shape="rect" id="node8" href="$convnet__sp_8cpp.html" title="main function for launching experiments with convolutional neural networks and sparse network ..." alt="" coords="470,80,585,107"/>
+<area shape="rect" id="node9" href="$nn__ops__sp__conv_8hpp.html" title="Implementation of the functions required for neural networks. " alt="" coords="609,80,755,107"/>
+</map>
