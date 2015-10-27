@@ -1,0 +1,419 @@
+\hypertarget{nn__ops__conv_8hpp}{}\section{nn\+\_\+ops\+\_\+conv.\+hpp File Reference}
+\label{nn__ops__conv_8hpp}\index{nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}}
+
+
+Implementation of the functions required for convolutional neural networks.  
+
+
+{\ttfamily \#include \char`\"{}utils.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}utils\+\_\+conv.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}nn\+\_\+ops.\+hpp\char`\"{}}\\*
+Include dependency graph for nn\+\_\+ops\+\_\+conv.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nn__ops__conv_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{nn__ops__conv_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{nn__ops__conv_8hpp_a2d1a1a57b9ab6fcf73dac5906c9abd04}{transpose\+Conv\+W} (const My\+Matrix \&conv\+\_\+\+W, const unsigned n\+\_\+chan, const unsigned Hf, My\+Matrix \&conv\+\_\+\+W\+\_\+\+T)
+\begin{DoxyCompactList}\small\item\em Transpose the convolution weights according to the characteristic of the filter. \end{DoxyCompactList}\item 
+unsigned \hyperlink{nn__ops__conv_8hpp_a9e8b09d7012b01113c26ff54bd026cd9}{init\+Conv\+Layer} (const std\+::vector$<$ \hyperlink{struct_conv_layer_params}{Conv\+Layer\+Params} $>$ \&conv\+\_\+params, std\+::vector$<$ My\+Matrix $>$ \&conv\+W, std\+::vector$<$ My\+Matrix $>$ \&conv\+W\+\_\+\+T, std\+::vector$<$ My\+Vector $>$ \&conv\+B)
+\begin{DoxyCompactList}\small\item\em Initialize the weights of a convolutional layer with a small normal noise (0.\+01) \end{DoxyCompactList}\item 
+int \hyperlink{nn__ops__conv_8hpp_af007d6a69bc2da9b8497eaa771eb1e51}{init\+Network} (const std\+::vector$<$ unsigned $>$ \&nn\+\_\+arch, const std\+::string act\+\_\+func, const std\+::vector$<$ \hyperlink{struct_conv_layer_params}{Conv\+Layer\+Params} $>$ \&conv\+\_\+params, const std\+::vector$<$ \hyperlink{struct_pool_layer_params}{Pool\+Layer\+Params} $>$ \&pool\+\_\+params, std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Vector $>$ \&B, std\+::vector$<$ My\+Matrix $>$ \&conv\+W, std\+::vector$<$ My\+Matrix $>$ \&conv\+W\+\_\+\+T, std\+::vector$<$ My\+Vector $>$ \&conv\+B)
+\begin{DoxyCompactList}\small\item\em Initialize the parameters of the convolutional Neural Network computational graph. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops__conv_8hpp_a1fce4d87ddb93dde916eeafd9e724f59}{pool\+Max} (const unsigned n\+\_\+img, const unsigned conv\+\_\+\+N1, const unsigned conv\+\_\+\+N2, const unsigned F, const unsigned S, const My\+Matrix \&conv\+\_\+layer, My\+Matrix \&pool\+\_\+layer, std\+::vector$<$ unsigned $>$ \&pool\+\_\+idx\+\_\+x, std\+::vector$<$ unsigned $>$ \&pool\+\_\+idx\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Perform a max pooling operation. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops__conv_8hpp_ab863f7d41b9e0d9d104779c802c60b4d}{conv\+Fprop} (const unsigned batch\+\_\+size, const std\+::vector$<$ \hyperlink{struct_conv_layer_params}{Conv\+Layer\+Params} $>$ \&conv\+\_\+params, const std\+::vector$<$ \hyperlink{struct_pool_layer_params}{Pool\+Layer\+Params} $>$ \&pool\+\_\+params, const Activation\+Function \&act\+\_\+func, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+W, const std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+\+B, const My\+Matrix \&X\+\_\+batch, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+A, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+Ap, My\+Matrix \&z0, std\+::vector$<$ std\+::vector$<$ unsigned $>$$>$ \&pool\+Idx\+X, std\+::vector$<$ std\+::vector$<$ unsigned $>$$>$ \&pool\+Idx\+Y)
+\begin{DoxyCompactList}\small\item\em Implementation of the forward propagation algorithm for convolutional layer. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops__conv_8hpp_a86d5271f3402baee41e3e757fa2327a2}{conv\+Bprop} (const unsigned batch\+\_\+size, const std\+::vector$<$ \hyperlink{struct_conv_layer_params}{Conv\+Layer\+Params} $>$ \&conv\+\_\+params, const std\+::vector$<$ \hyperlink{struct_pool_layer_params}{Pool\+Layer\+Params} $>$ \&pool\+\_\+params, const std\+::vector$<$ My\+Matrix $>$ \&conv\+W\+\_\+\+T, const std\+::vector$<$ My\+Matrix $>$ \&conv\+Ap, const My\+Matrix \&pool\+\_\+grad\+B, std\+::vector$<$ My\+Matrix $>$ \&grad\+B, std\+::vector$<$ std\+::vector$<$ unsigned $>$$>$ \&pool\+Idx\+X, std\+::vector$<$ std\+::vector$<$ unsigned $>$$>$ \&pool\+Idx\+Y)
+\begin{DoxyCompactList}\small\item\em Implementation of the backpropagation algorithm for convolutional layer. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops__conv_8hpp_ac8b3063f74f3e00895c31d569c68aaa2}{conv\+Update} (const double eta, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+W, std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+\+B)
+\begin{DoxyCompactList}\small\item\em Implementation of the update function of the convolution layers (required for testing) \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops__conv_8hpp_a2d211cd2f6f6acab9da2c708d3cce3f2}{conv\+Update} (const unsigned batch\+\_\+size, const double eta, const std\+::vector$<$ \hyperlink{struct_conv_layer_params}{Conv\+Layer\+Params} $>$ \&conv\+\_\+params, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+W, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+W\+\_\+\+T, std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+\+B)
+\begin{DoxyCompactList}\small\item\em Implementation of the update function of the convolution layers. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops__conv_8hpp_a9eac26b0f319ddcafb904deca1c8a416}{conv\+Update\+Test} (const unsigned batch\+\_\+size, const double eta, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+W, std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+\+B, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+update, std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+update\+B)
+\begin{DoxyCompactList}\small\item\em Implementation of the update function of the convolution layers. \end{DoxyCompactList}\item 
+\hypertarget{nn__ops__conv_8hpp_a411fe32e99240bed4d61e7dea2c3c162}{}void {\bfseries update\+Conv\+Metric} (const bool init\+\_\+flag, const double gamma, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+Mii, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+M0i, std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+\+M00, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+p\+Mii, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+p\+M0i, std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+p\+M00)\label{nn__ops__conv_8hpp_a411fe32e99240bed4d61e7dea2c3c162}
+
+\item 
+\hypertarget{nn__ops__conv_8hpp_aa252e74b217c2b2665954a2a39f798f9}{}void {\bfseries build\+Conv\+Q\+D\+Metric} (const unsigned batch\+\_\+size, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+grad\+B\+\_\+sq, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+A, const My\+Matrix \&X\+\_\+batch, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+W, const double mat\+\_\+reg, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+Mii, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+M0i, std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+\+M00)\label{nn__ops__conv_8hpp_aa252e74b217c2b2665954a2a39f798f9}
+
+\item 
+\hypertarget{nn__ops__conv_8hpp_abbc7097bec6fae0caa783efc405cf277}{}void {\bfseries compute\+Loss} (const Activation\+Function \&act\+\_\+func, const unsigned batch\+\_\+size, const My\+Matrix \&X, const My\+Vector \&Y, const std\+::vector$<$ \hyperlink{struct_conv_layer_params}{Conv\+Layer\+Params} $>$ \&conv\+\_\+params, const std\+::vector$<$ \hyperlink{struct_pool_layer_params}{Pool\+Layer\+Params} $>$ \&pool\+\_\+params, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+W, const std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+\+B, const std\+::vector$<$ My\+Matrix $>$ \&W, const std\+::vector$<$ My\+Vector $>$ \&B, double \&loss, double \&accuracy)\label{nn__ops__conv_8hpp_abbc7097bec6fae0caa783efc405cf277}
+
+\item 
+\hypertarget{nn__ops__conv_8hpp_a6657175f9e911da675e3c637d0e275d2}{}void {\bfseries eval\+Model} (const Activation\+Function \&eval\+\_\+act\+\_\+func, const \hyperlink{struct_params}{Params} \&params, const unsigned n\+\_\+batch, const unsigned batch\+\_\+size, const unsigned n\+\_\+example, const My\+Matrix \&X, const My\+Vector \&Y, const std\+::vector$<$ \hyperlink{struct_conv_layer_params}{Conv\+Layer\+Params} $>$ \&conv\+\_\+params, const std\+::vector$<$ \hyperlink{struct_pool_layer_params}{Pool\+Layer\+Params} $>$ \&pool\+\_\+params, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+W, const std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+\+B, std\+::vector$<$ My\+Matrix $>$ \&W\+\_\+eval, std\+::vector$<$ My\+Vector $>$ \&B, double \&acc\+\_\+loss, double \&acc\+\_\+accuracy)\label{nn__ops__conv_8hpp_a6657175f9e911da675e3c637d0e275d2}
+
+\item 
+\hypertarget{nn__ops__conv_8hpp_ad0afdaae88b522aa8b71559b71c758cd}{}void {\bfseries eval\+Model} (const Activation\+Function \&eval\+\_\+act\+\_\+func, const unsigned train\+\_\+batch\+\_\+size, const My\+Matrix \&X\+\_\+train, const My\+Matrix \&Y\+\_\+train, const unsigned valid\+\_\+batch\+\_\+size, const My\+Matrix \&X\+\_\+valid, const My\+Matrix \&Y\+\_\+valid, const std\+::vector$<$ \hyperlink{struct_conv_layer_params}{Conv\+Layer\+Params} $>$ \&conv\+\_\+params, const std\+::vector$<$ \hyperlink{struct_pool_layer_params}{Pool\+Layer\+Params} $>$ \&pool\+\_\+params, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+W, const std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+\+B, std\+::vector$<$ My\+Matrix $>$ \&W\+\_\+eval, std\+::vector$<$ My\+Vector $>$ \&B, double \&train\+\_\+loss, double \&train\+\_\+accuracy, double \&valid\+\_\+loss, double \&valid\+\_\+accuracy)\label{nn__ops__conv_8hpp_ad0afdaae88b522aa8b71559b71c758cd}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of the functions required for convolutional neural networks. 
+
+\begin{DoxyAuthor}{Author}
+Gaetan Marceau Caron \& Yann Ollivier 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\subsection{Function Documentation}
+\hypertarget{nn__ops__conv_8hpp_a86d5271f3402baee41e3e757fa2327a2}{}\index{nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}!conv\+Bprop@{conv\+Bprop}}
+\index{conv\+Bprop@{conv\+Bprop}!nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}}
+\subsubsection[{conv\+Bprop}]{\setlength{\rightskip}{0pt plus 5cm}void conv\+Bprop (
+\begin{DoxyParamCaption}
+\item[{const unsigned}]{batch\+\_\+size, }
+\item[{const std\+::vector$<$ {\bf Conv\+Layer\+Params} $>$ \&}]{conv\+\_\+params, }
+\item[{const std\+::vector$<$ {\bf Pool\+Layer\+Params} $>$ \&}]{pool\+\_\+params, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+W\+\_\+\+T, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+Ap, }
+\item[{const My\+Matrix \&}]{pool\+\_\+grad\+B, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{grad\+B, }
+\item[{std\+::vector$<$ std\+::vector$<$ unsigned $>$$>$ \&}]{pool\+Idx\+X, }
+\item[{std\+::vector$<$ std\+::vector$<$ unsigned $>$$>$ \&}]{pool\+Idx\+Y}
+\end{DoxyParamCaption}
+)}\label{nn__ops__conv_8hpp_a86d5271f3402baee41e3e757fa2327a2}
+
+
+Implementation of the backpropagation algorithm for convolutional layer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em batch\+\_\+size} & number of examples in the batch \\
+\hline
+{\em conv\+\_\+params} & a standard vector with parameters for each convolutional layer \\
+\hline
+{\em pool\+\_\+params} & a standard vector with parameters for each pooling layer \\
+\hline
+{\em conv\+W\+\_\+\+T} & a standard vector of bias vectors (one per layer) \\
+\hline
+{\em conv\+Ap} & \\
+\hline
+{\em pool\+\_\+grad\+B} & \\
+\hline
+{\em grad\+B} & \\
+\hline
+{\em pool\+Idx\+X} & \\
+\hline
+{\em pool\+Idx\+Y} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops__conv_8hpp_ab863f7d41b9e0d9d104779c802c60b4d}{}\index{nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}!conv\+Fprop@{conv\+Fprop}}
+\index{conv\+Fprop@{conv\+Fprop}!nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}}
+\subsubsection[{conv\+Fprop}]{\setlength{\rightskip}{0pt plus 5cm}void conv\+Fprop (
+\begin{DoxyParamCaption}
+\item[{const unsigned}]{batch\+\_\+size, }
+\item[{const std\+::vector$<$ {\bf Conv\+Layer\+Params} $>$ \&}]{conv\+\_\+params, }
+\item[{const std\+::vector$<$ {\bf Pool\+Layer\+Params} $>$ \&}]{pool\+\_\+params, }
+\item[{const Activation\+Function \&}]{act\+\_\+func, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+\_\+\+W, }
+\item[{const std\+::vector$<$ My\+Vector $>$ \&}]{conv\+\_\+\+B, }
+\item[{const My\+Matrix \&}]{X\+\_\+batch, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+\_\+\+A, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+\_\+\+Ap, }
+\item[{My\+Matrix \&}]{z0, }
+\item[{std\+::vector$<$ std\+::vector$<$ unsigned $>$$>$ \&}]{pool\+Idx\+X, }
+\item[{std\+::vector$<$ std\+::vector$<$ unsigned $>$$>$ \&}]{pool\+Idx\+Y}
+\end{DoxyParamCaption}
+)}\label{nn__ops__conv_8hpp_ab863f7d41b9e0d9d104779c802c60b4d}
+
+
+Implementation of the forward propagation algorithm for convolutional layer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em batch\+\_\+size} & number of examples in the batch \\
+\hline
+{\em conv\+\_\+params} & a standard vector with parameters for each convolutional layer \\
+\hline
+{\em pool\+\_\+params} & a standard vector with parameters for each pooling layer \\
+\hline
+{\em act\+\_\+func} & string representing the activation function \\
+\hline
+{\em conv\+\_\+\+W} & \\
+\hline
+{\em conv\+\_\+\+B} & \\
+\hline
+{\em X\+\_\+batch} & a matrix containing the training examples of the current minibatch \\
+\hline
+{\em conv\+\_\+\+A} & \\
+\hline
+{\em conv\+\_\+d\+A} & \\
+\hline
+{\em z0} & \\
+\hline
+{\em pool\+Idx\+X} & \\
+\hline
+{\em pool\+Idx\+Y} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops__conv_8hpp_ac8b3063f74f3e00895c31d569c68aaa2}{}\index{nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}!conv\+Update@{conv\+Update}}
+\index{conv\+Update@{conv\+Update}!nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}}
+\subsubsection[{conv\+Update}]{\setlength{\rightskip}{0pt plus 5cm}void conv\+Update (
+\begin{DoxyParamCaption}
+\item[{const double}]{eta, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+\_\+grad\+B, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+\_\+\+A, }
+\item[{const My\+Matrix \&}]{X\+\_\+batch, }
+\item[{const std\+::string}]{regularizer, }
+\item[{const double}]{lambda, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+\_\+\+W, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{conv\+\_\+\+B}
+\end{DoxyParamCaption}
+)}\label{nn__ops__conv_8hpp_ac8b3063f74f3e00895c31d569c68aaa2}
+
+
+Implementation of the update function of the convolution layers (required for testing) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em eta} & the gradient descent step-\/size \\
+\hline
+{\em conv\+\_\+grad\+B} & a standard vector of the gradient w.\+r.\+t. the pre-\/activation values (one per conv layer) \\
+\hline
+{\em conv\+\_\+\+A} & a standard vector of activation values (one per conv layer) \\
+\hline
+{\em X\+\_\+batch} & a matrix containing the training examples of the current minibatch \\
+\hline
+{\em regularizer} & the string of the norm regularizer (L1 or L2) \\
+\hline
+{\em lambda} & the amplitude of the regularization term \\
+\hline
+{\em conv\+\_\+\+W} & a standard vector of weight matrices (one per conv layer) \\
+\hline
+{\em conv\+\_\+\+B} & a standard vector of bias vectors (one per conv layer) \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops__conv_8hpp_a2d211cd2f6f6acab9da2c708d3cce3f2}{}\index{nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}!conv\+Update@{conv\+Update}}
+\index{conv\+Update@{conv\+Update}!nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}}
+\subsubsection[{conv\+Update}]{\setlength{\rightskip}{0pt plus 5cm}void conv\+Update (
+\begin{DoxyParamCaption}
+\item[{const unsigned}]{batch\+\_\+size, }
+\item[{const double}]{eta, }
+\item[{const std\+::vector$<$ {\bf Conv\+Layer\+Params} $>$ \&}]{conv\+\_\+params, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+\_\+grad\+B, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+\_\+\+A, }
+\item[{const My\+Matrix \&}]{X\+\_\+batch, }
+\item[{const std\+::string}]{regularizer, }
+\item[{const double}]{lambda, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+\_\+\+W, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+\_\+\+W\+\_\+\+T, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{conv\+\_\+\+B}
+\end{DoxyParamCaption}
+)}\label{nn__ops__conv_8hpp_a2d211cd2f6f6acab9da2c708d3cce3f2}
+
+
+Implementation of the update function of the convolution layers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em batch\+\_\+size} & number of examples in the batch \\
+\hline
+{\em eta} & the gradient descent step-\/size \\
+\hline
+{\em conv\+\_\+grad\+B} & a standard vector of the gradient w.\+r.\+t. the pre-\/activation values (one per conv layer) \\
+\hline
+{\em conv\+\_\+\+A} & a standard vector of activation values (one per conv layer) \\
+\hline
+{\em X\+\_\+batch} & a matrix containing the training examples of the current minibatch \\
+\hline
+{\em regularizer} & the string of the norm regularizer (L1 or L2) \\
+\hline
+{\em lambda} & the amplitude of the regularization term \\
+\hline
+{\em conv\+\_\+\+W} & a standard vector of weight matrices (one per conv layer) \\
+\hline
+{\em conv\+\_\+\+B} & a standard vector of bias vectors (one per conv layer) \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops__conv_8hpp_a9eac26b0f319ddcafb904deca1c8a416}{}\index{nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}!conv\+Update\+Test@{conv\+Update\+Test}}
+\index{conv\+Update\+Test@{conv\+Update\+Test}!nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}}
+\subsubsection[{conv\+Update\+Test}]{\setlength{\rightskip}{0pt plus 5cm}void conv\+Update\+Test (
+\begin{DoxyParamCaption}
+\item[{const unsigned}]{batch\+\_\+size, }
+\item[{const double}]{eta, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+\_\+grad\+B, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+\_\+\+A, }
+\item[{const My\+Matrix \&}]{X\+\_\+batch, }
+\item[{const std\+::string}]{regularizer, }
+\item[{const double}]{lambda, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+\_\+\+W, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{conv\+\_\+\+B, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+\_\+update, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{conv\+\_\+update\+B}
+\end{DoxyParamCaption}
+)}\label{nn__ops__conv_8hpp_a9eac26b0f319ddcafb904deca1c8a416}
+
+
+Implementation of the update function of the convolution layers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em batch\+\_\+size} & number of examples in the batch \\
+\hline
+{\em eta} & the gradient descent step-\/size \\
+\hline
+{\em conv\+\_\+grad\+B} & a standard vector of the gradient w.\+r.\+t. the pre-\/activation values (one per conv layer) \\
+\hline
+{\em conv\+\_\+\+A} & a standard vector of activation values (one per conv layer) \\
+\hline
+{\em X\+\_\+batch} & a matrix containing the training examples of the current minibatch \\
+\hline
+{\em regularizer} & the string of the norm regularizer (L1 or L2) \\
+\hline
+{\em lambda} & the amplitude of the regularization term \\
+\hline
+{\em conv\+\_\+\+W} & a standard vector of weight matrices (one per conv layer) \\
+\hline
+{\em conv\+\_\+\+B} & a standard vector of bias vectors (one per conv layer) \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops__conv_8hpp_a9e8b09d7012b01113c26ff54bd026cd9}{}\index{nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}!init\+Conv\+Layer@{init\+Conv\+Layer}}
+\index{init\+Conv\+Layer@{init\+Conv\+Layer}!nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}}
+\subsubsection[{init\+Conv\+Layer}]{\setlength{\rightskip}{0pt plus 5cm}unsigned init\+Conv\+Layer (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ {\bf Conv\+Layer\+Params} $>$ \&}]{conv\+\_\+params, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+W, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+W\+\_\+\+T, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{conv\+B}
+\end{DoxyParamCaption}
+)}\label{nn__ops__conv_8hpp_a9e8b09d7012b01113c26ff54bd026cd9}
+
+
+Initialize the weights of a convolutional layer with a small normal noise (0.\+01) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em conv\+\_\+params} & a standard vector with parameters for each convolutional layer \\
+\hline
+{\em conv\+W} & a standard vector with weight matrix for each convolutional layer \\
+\hline
+{\em conv\+W\+\_\+\+T} & a standard vector with transposed weight matrix for each convolutional layer \\
+\hline
+{\em conv\+B} & a standard vector with bias vector for each convolutional layer \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops__conv_8hpp_af007d6a69bc2da9b8497eaa771eb1e51}{}\index{nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}!init\+Network@{init\+Network}}
+\index{init\+Network@{init\+Network}!nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}}
+\subsubsection[{init\+Network}]{\setlength{\rightskip}{0pt plus 5cm}int init\+Network (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ unsigned $>$ \&}]{nn\+\_\+arch, }
+\item[{const std\+::string}]{act\+\_\+func, }
+\item[{const std\+::vector$<$ {\bf Conv\+Layer\+Params} $>$ \&}]{conv\+\_\+params, }
+\item[{const std\+::vector$<$ {\bf Pool\+Layer\+Params} $>$ \&}]{pool\+\_\+params, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{W, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{B, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+W, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{conv\+W\+\_\+\+T, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{conv\+B}
+\end{DoxyParamCaption}
+)}\label{nn__ops__conv_8hpp_af007d6a69bc2da9b8497eaa771eb1e51}
+
+
+Initialize the parameters of the convolutional Neural Network computational graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nn\+\_\+arch} & number of activation units for each layer \\
+\hline
+{\em act\+\_\+func} & string representing the activation function \\
+\hline
+{\em conv\+\_\+params} & a standard vector with parameters for each convolutional layer \\
+\hline
+{\em pool\+\_\+params} & a standard vector with parameters for each pooling layer \\
+\hline
+{\em W} & a standard vector of weight matrices (one per layer) \\
+\hline
+{\em B} & a standard vector of bias vectors (one per layer) \\
+\hline
+{\em conv\+W} & a standard vector of weight matrices (one per layer) \\
+\hline
+{\em conv\+W\+\_\+\+T} & a standard vector of bias vectors (one per layer) \\
+\hline
+{\em conv\+B} & a standard vector of weight matrices (one per layer) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of parameters 
+\end{DoxyReturn}
+\hypertarget{nn__ops__conv_8hpp_a1fce4d87ddb93dde916eeafd9e724f59}{}\index{nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}!pool\+Max@{pool\+Max}}
+\index{pool\+Max@{pool\+Max}!nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}}
+\subsubsection[{pool\+Max}]{\setlength{\rightskip}{0pt plus 5cm}void pool\+Max (
+\begin{DoxyParamCaption}
+\item[{const unsigned}]{n\+\_\+img, }
+\item[{const unsigned}]{conv\+\_\+\+N1, }
+\item[{const unsigned}]{conv\+\_\+\+N2, }
+\item[{const unsigned}]{F, }
+\item[{const unsigned}]{S, }
+\item[{const My\+Matrix \&}]{conv\+\_\+layer, }
+\item[{My\+Matrix \&}]{pool\+\_\+layer, }
+\item[{std\+::vector$<$ unsigned $>$ \&}]{pool\+\_\+idx\+\_\+x, }
+\item[{std\+::vector$<$ unsigned $>$ \&}]{pool\+\_\+idx\+\_\+y}
+\end{DoxyParamCaption}
+)}\label{nn__ops__conv_8hpp_a1fce4d87ddb93dde916eeafd9e724f59}
+
+
+Perform a max pooling operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+\_\+img} & the number of images \\
+\hline
+{\em conv\+\_\+\+N1} & \\
+\hline
+{\em conv\+\_\+\+N2} & \\
+\hline
+{\em F} & \\
+\hline
+{\em S} & \\
+\hline
+{\em conv\+\_\+layer} & \\
+\hline
+{\em pool\+\_\+layer} & \\
+\hline
+{\em pool\+\_\+idx\+\_\+x} & \\
+\hline
+{\em pool\+\_\+idx\+\_\+y} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops__conv_8hpp_a2d1a1a57b9ab6fcf73dac5906c9abd04}{}\index{nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}!transpose\+Conv\+W@{transpose\+Conv\+W}}
+\index{transpose\+Conv\+W@{transpose\+Conv\+W}!nn\+\_\+ops\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+conv.\+hpp}}
+\subsubsection[{transpose\+Conv\+W}]{\setlength{\rightskip}{0pt plus 5cm}void transpose\+Conv\+W (
+\begin{DoxyParamCaption}
+\item[{const My\+Matrix \&}]{conv\+\_\+\+W, }
+\item[{const unsigned}]{n\+\_\+chan, }
+\item[{const unsigned}]{Hf, }
+\item[{My\+Matrix \&}]{conv\+\_\+\+W\+\_\+\+T}
+\end{DoxyParamCaption}
+)}\label{nn__ops__conv_8hpp_a2d1a1a57b9ab6fcf73dac5906c9abd04}
+
+
+Transpose the convolution weights according to the characteristic of the filter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em conv\+\_\+\+W} & a weight matrix of a convolutional layer \\
+\hline
+{\em n\+\_\+chan} & the number of channels \\
+\hline
+{\em Hf} & the size of the filter \\
+\hline
+{\em conv\+\_\+\+W\+\_\+\+T} & the transposed weight matrix of a convolutional layer \\
+\hline
+\end{DoxyParams}

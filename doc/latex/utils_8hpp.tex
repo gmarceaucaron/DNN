@@ -1,0 +1,394 @@
+\hypertarget{utils_8hpp}{}\section{utils.\+hpp File Reference}
+\label{utils_8hpp}\index{utils.\+hpp@{utils.\+hpp}}
+
+
+Implementation of auxiliary functions required for dataset loading and outputting.  
+
+
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$chrono$>$}\\*
+{\ttfamily \#include $<$random$>$}\\*
+{\ttfamily \#include $<$map$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$Eigen/\+Dense$>$}\\*
+{\ttfamily \#include $<$Eigen/\+Sparse\+Core$>$}\\*
+{\ttfamily \#include $<$sys/types.\+h$>$}\\*
+{\ttfamily \#include $<$sys/stat.\+h$>$}\\*
+Include dependency graph for utils.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utils_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utils_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_params}{Params}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{utils_8hpp_a9383dd932a4b78622a7a1d2db5c82402}{}using {\bfseries My\+Sp\+Matrix} = Eigen\+::\+Sparse\+Matrix$<$ double, Col\+Major $>$\label{utils_8hpp_a9383dd932a4b78622a7a1d2db5c82402}
+
+\item 
+\hypertarget{utils_8hpp_af8f2e2685082c7a1ce52da465889378a}{}using {\bfseries My\+Matrix} = Eigen\+::\+Matrix$<$ double, Dynamic, Dynamic, Col\+Major $>$\label{utils_8hpp_af8f2e2685082c7a1ce52da465889378a}
+
+\item 
+\hypertarget{utils_8hpp_a16444aa6a902fc0ed5b34b5596aa37b7}{}using {\bfseries Sp\+Entry} = Eigen\+::\+Triplet$<$ double $>$\label{utils_8hpp_a16444aa6a902fc0ed5b34b5596aa37b7}
+
+\item 
+\hypertarget{utils_8hpp_af51a59f565b7450f96bf3fcf2e438c93}{}using {\bfseries My\+Vector} = Eigen\+::\+Matrix$<$ double, Dynamic, 1, Col\+Major $>$\label{utils_8hpp_af51a59f565b7450f96bf3fcf2e438c93}
+
+\item 
+\hypertarget{utils_8hpp_a436cf01a405728e59c24f8f0ca754a81}{}using {\bfseries Activation\+Function} = std\+::function$<$ void(const My\+Matrix \&, My\+Matrix \&, My\+Matrix \&)$>$\label{utils_8hpp_a436cf01a405728e59c24f8f0ca754a81}
+
+\item 
+\hypertarget{utils_8hpp_aa0c25e9c03997ebcd5aa6b837f671d9f}{}using {\bfseries Forward\+Function} = std\+::function$<$ void(const Activation\+Function \&, const std\+::vector$<$ My\+Matrix $>$ \&, const std\+::vector$<$ My\+Vector $>$ \&, const My\+Matrix \&, std\+::vector$<$ My\+Matrix $>$ \&, std\+::vector$<$ My\+Matrix $>$ \&, std\+::vector$<$ My\+Matrix $>$ \&)$>$\label{utils_8hpp_aa0c25e9c03997ebcd5aa6b837f671d9f}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{utils_8hpp_a8f4184801babfe7e55e142491371de67}{}void {\bfseries printtime} ()\label{utils_8hpp_a8f4184801babfe7e55e142491371de67}
+
+\item 
+\hypertarget{utils_8hpp_a1e327b035b2c95cf6ad856e9a518393e}{}double {\bfseries gettime} ()\label{utils_8hpp_a1e327b035b2c95cf6ad856e9a518393e}
+
+\item 
+int \hyperlink{utils_8hpp_a0a096ffad5fdb0a4a5e65356c9c86306}{Reverse\+Int} (const int i)
+\begin{DoxyCompactList}\small\item\em Implementation of the change of encoding. \end{DoxyCompactList}\item 
+void \hyperlink{utils_8hpp_a384799100357de20e8aeb55c7d1fac64}{parse\+Y\+A\+M\+L\+Seq} (const std\+::string seq\+\_\+str, std\+::vector$<$ unsigned $>$ \&seq)
+\begin{DoxyCompactList}\small\item\em Parse a sequence of number given as a string. \end{DoxyCompactList}\item 
+void \hyperlink{utils_8hpp_aa683093645a1f31ec9f1a0db9087f315}{read\+Args} (const int argc, char $\ast$argv\mbox{[}$\,$\mbox{]}, std\+::map$<$ std\+::string, std\+::string $>$ \&args)
+\begin{DoxyCompactList}\small\item\em Parse the arguments from the command line. \end{DoxyCompactList}\item 
+void \hyperlink{utils_8hpp_a6df4dc95a46aec52f95f8d7c0c7a30af}{set\+Params\+From\+Args} (std\+::map$<$ std\+::string, std\+::string $>$ \&args, \hyperlink{struct_params}{Params} \&params)
+\begin{DoxyCompactList}\small\item\em Fill the params holder structure with a dictionnary of key/value strings. \end{DoxyCompactList}\item 
+void \hyperlink{utils_8hpp_a5839158679f93bc5a833ecb09154adff}{set\+Params} (const std\+::string algo, std\+::map$<$ std\+::string, std\+::string $>$ args, \hyperlink{struct_params}{Params} \&params)
+\begin{DoxyCompactList}\small\item\em Set the default parameters according to the chosen algorithm. \end{DoxyCompactList}\item 
+void \hyperlink{utils_8hpp_a62ba4722350d9884660004d67199668d}{load\+Y\+A\+M\+L} (const std\+::string filename, std\+::map$<$ std\+::string, std\+::string $>$ \&config)
+\begin{DoxyCompactList}\small\item\em Read the arguments from a Y\+A\+M\+L file. \end{DoxyCompactList}\item 
+void \hyperlink{utils_8hpp_a0ee2ecc555aaa5b95a336c1d6b26a178}{set\+Params\+From\+File} (const std\+::string filename, std\+::map$<$ std\+::string, std\+::string $>$ \&args, \hyperlink{struct_params}{Params} \&params)
+\begin{DoxyCompactList}\small\item\em Read the arguments and save them into the parameters holder structure. \end{DoxyCompactList}\item 
+void \hyperlink{utils_8hpp_a96a1ff513794c047658d4bd461ff6add}{print\+Desc} (\hyperlink{struct_params}{Params} params, ostream $\ast$logger)
+\begin{DoxyCompactList}\small\item\em print the description of the parameters \end{DoxyCompactList}\item 
+void \hyperlink{utils_8hpp_a29b18fe301e0927dd6b955511b4f713b}{read\+M\+N\+I\+S\+T} (const string filename, My\+Matrix \&images, bool invert\+\_\+pixel)
+\begin{DoxyCompactList}\small\item\em read the M\+N\+I\+S\+T images \end{DoxyCompactList}\item 
+void \hyperlink{utils_8hpp_a02aa568999be47b9682eb358a6b1ae6e}{read\+M\+N\+I\+S\+T\+Label} (const string filename, My\+Vector \&labels)
+\begin{DoxyCompactList}\small\item\em read the M\+N\+I\+S\+T labels \end{DoxyCompactList}\item 
+int \hyperlink{utils_8hpp_a79f04d7f6ff9cd3caae4cdda562e5a01}{read\+C\+I\+F\+A\+R10} (const std\+::string filepath, My\+Matrix \&images, My\+Vector \&labels)
+\begin{DoxyCompactList}\small\item\em read the C\+I\+F\+A\+R-\/10 images \end{DoxyCompactList}\item 
+\hypertarget{utils_8hpp_a26e704ab3a2161fdc611f38ed0b2a11b}{}void {\bfseries load\+Light\+C\+I\+F\+A\+R10} (const double ratio\+\_\+train, My\+Matrix \&X\+\_\+train, My\+Matrix \&X\+\_\+valid, My\+Vector \&Y\+\_\+train, My\+Vector \&Y\+\_\+valid)\label{utils_8hpp_a26e704ab3a2161fdc611f38ed0b2a11b}
+
+\item 
+\hypertarget{utils_8hpp_afbdf4156cea7c6c2ace644e0f2944b85}{}void {\bfseries load\+C\+I\+F\+A\+R10} (const double ratio\+\_\+train, My\+Matrix \&X\+\_\+train, My\+Matrix \&X\+\_\+valid, My\+Vector \&Y\+\_\+train, My\+Vector \&Y\+\_\+valid)\label{utils_8hpp_afbdf4156cea7c6c2ace644e0f2944b85}
+
+\item 
+\hypertarget{utils_8hpp_a59b61ef932f6eefdfc8c2d0bd57d9d1f}{}void {\bfseries shuffle\+Database} (My\+Matrix \&data, My\+Vector \&labels, unsigned n\+\_\+examples=0)\label{utils_8hpp_a59b61ef932f6eefdfc8c2d0bd57d9d1f}
+
+\item 
+\hypertarget{utils_8hpp_aff3761117c5f33b7612c0a8c64850ab9}{}void {\bfseries load\+Mnist} (const \hyperlink{struct_params}{Params} \&params, My\+Matrix \&X\+\_\+train, My\+Matrix \&X\+\_\+valid, My\+Vector \&Y\+\_\+train, My\+Vector \&Y\+\_\+valid)\label{utils_8hpp_aff3761117c5f33b7612c0a8c64850ab9}
+
+\item 
+\hypertarget{utils_8hpp_abb66696c7dd025108b10bcf30cf88456}{}void {\bfseries get\+Mini\+Batch} (const unsigned j, const unsigned batch\+\_\+size, const My\+Matrix \&X, const Vector\+Xd \&Y, const My\+Matrix \&one\+\_\+hot, unsigned \&curr\+\_\+batch\+\_\+size, My\+Matrix \&X\+\_\+batch, My\+Matrix \&one\+\_\+hot\+\_\+batch)\label{utils_8hpp_abb66696c7dd025108b10bcf30cf88456}
+
+\item 
+\hypertarget{utils_8hpp_a8df68d69d0d6344f81e415e48354de4d}{}void {\bfseries labels2one\+Hot} (const My\+Matrix \&labels, My\+Matrix \&one\+\_\+hot)\label{utils_8hpp_a8df68d69d0d6344f81e415e48354de4d}
+
+\item 
+\hypertarget{utils_8hpp_aacccc5760793abdf7a59e73ef0159cae}{}void {\bfseries write\+Network} (const std\+::string filename, std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Vector $>$ \&B)\label{utils_8hpp_aacccc5760793abdf7a59e73ef0159cae}
+
+\item 
+\hypertarget{utils_8hpp_a7d0c5de4e2fd4062f369998b7ed6c72e}{}int {\bfseries load\+Network} (const std\+::string filename, std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Vector $>$ \&B)\label{utils_8hpp_a7d0c5de4e2fd4062f369998b7ed6c72e}
+
+\item 
+\hypertarget{utils_8hpp_ae5a82a442a3167a5f09592e391697883}{}void {\bfseries create\+Log\+Dir} (const std\+::string dir)\label{utils_8hpp_ae5a82a442a3167a5f09592e391697883}
+
+\item 
+\hypertarget{utils_8hpp_a01429fef023f0415731125356b2f6dec}{}void {\bfseries get\+Output} (const std\+::string path, ostream $\ast$\&out)\label{utils_8hpp_a01429fef023f0415731125356b2f6dec}
+
+\item 
+\hypertarget{utils_8hpp_a27ecc2ea0479ad392c5b9e46ad0fde1b}{}void {\bfseries monitor} (const std\+::vector$<$ My\+Matrix $>$ \&A\+\_\+vec)\label{utils_8hpp_a27ecc2ea0479ad392c5b9e46ad0fde1b}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{utils_8hpp_ab49a616e1496272eef0037cdfe03f98b}{}const std\+::string {\bfseries C\+I\+F\+A\+R\+\_\+\+D\+I\+R} = \char`\"{}./cifar-\/10-\/batches-\/bin/\char`\"{}\label{utils_8hpp_ab49a616e1496272eef0037cdfe03f98b}
+
+\item 
+\hypertarget{utils_8hpp_a77e6d9c658f7dea0b529984c9075f50b}{}const std\+::string {\bfseries M\+N\+I\+S\+T\+\_\+\+D\+I\+R} = \char`\"{}./mnist/\char`\"{}\label{utils_8hpp_a77e6d9c658f7dea0b529984c9075f50b}
+
+\item 
+\hypertarget{utils_8hpp_a1eaf6cedc54267bfff99f2700b0f8c2d}{}const unsigned {\bfseries N\+\_\+\+R\+O\+W} = 10000\label{utils_8hpp_a1eaf6cedc54267bfff99f2700b0f8c2d}
+
+\item 
+\hypertarget{utils_8hpp_a37ea3403219151fb6f509ee7ed571d7e}{}const unsigned {\bfseries N\+\_\+\+C\+H\+A\+N\+N\+E\+L} = 1\label{utils_8hpp_a37ea3403219151fb6f509ee7ed571d7e}
+
+\item 
+\hypertarget{utils_8hpp_aeb1ed8e1604c6b7268fd1bef57d0be70}{}const unsigned {\bfseries I\+M\+G\+\_\+\+W\+I\+D\+T\+H} = 28\label{utils_8hpp_aeb1ed8e1604c6b7268fd1bef57d0be70}
+
+\item 
+\hypertarget{utils_8hpp_af9f8e327af39cfb5f166889109a51689}{}const unsigned {\bfseries I\+M\+G\+\_\+\+H\+E\+I\+G\+H\+T} = 28\label{utils_8hpp_af9f8e327af39cfb5f166889109a51689}
+
+\item 
+\hypertarget{utils_8hpp_ae3fc053a24d81b793719a04bc1b7c47b}{}const unsigned {\bfseries N\+\_\+\+P\+I\+X\+E\+L} = I\+M\+G\+\_\+\+W\+I\+D\+T\+H $\ast$ I\+M\+G\+\_\+\+H\+E\+I\+G\+H\+T\label{utils_8hpp_ae3fc053a24d81b793719a04bc1b7c47b}
+
+\item 
+\hypertarget{utils_8hpp_ab577cbc7a7051e1bcf60c2c1797a0feb}{}std\+::mt19937 {\bfseries gen}\label{utils_8hpp_ab577cbc7a7051e1bcf60c2c1797a0feb}
+
+\item 
+\hypertarget{utils_8hpp_a651bb0654263299f2b7d5164e409174d}{}auto {\bfseries t} =clock()\label{utils_8hpp_a651bb0654263299f2b7d5164e409174d}
+
+\item 
+\hypertarget{utils_8hpp_abc867299ce5e1817c1bf020588f2e885}{}auto {\bfseries starting\+\_\+time} =clock()\label{utils_8hpp_abc867299ce5e1817c1bf020588f2e885}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of auxiliary functions required for dataset loading and outputting. 
+
+Implementation of auxiliary functions for dataset loading, parameter handling and outputting.
+
+\begin{DoxyAuthor}{Author}
+Gaetan Marceau Caron \& Yann Ollivier 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\subsection{Function Documentation}
+\hypertarget{utils_8hpp_a62ba4722350d9884660004d67199668d}{}\index{utils.\+hpp@{utils.\+hpp}!load\+Y\+A\+M\+L@{load\+Y\+A\+M\+L}}
+\index{load\+Y\+A\+M\+L@{load\+Y\+A\+M\+L}!utils.\+hpp@{utils.\+hpp}}
+\subsubsection[{load\+Y\+A\+M\+L}]{\setlength{\rightskip}{0pt plus 5cm}void load\+Y\+A\+M\+L (
+\begin{DoxyParamCaption}
+\item[{const std\+::string}]{filename, }
+\item[{std\+::map$<$ std\+::string, std\+::string $>$ \&}]{config}
+\end{DoxyParamCaption}
+)}\label{utils_8hpp_a62ba4722350d9884660004d67199668d}
+
+
+Read the arguments from a Y\+A\+M\+L file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & the path of the Y\+A\+M\+L file \\
+\hline
+{\em config} & a map containing pairs of key/value strings \\
+\hline
+\end{DoxyParams}
+\hypertarget{utils_8hpp_a384799100357de20e8aeb55c7d1fac64}{}\index{utils.\+hpp@{utils.\+hpp}!parse\+Y\+A\+M\+L\+Seq@{parse\+Y\+A\+M\+L\+Seq}}
+\index{parse\+Y\+A\+M\+L\+Seq@{parse\+Y\+A\+M\+L\+Seq}!utils.\+hpp@{utils.\+hpp}}
+\subsubsection[{parse\+Y\+A\+M\+L\+Seq}]{\setlength{\rightskip}{0pt plus 5cm}void parse\+Y\+A\+M\+L\+Seq (
+\begin{DoxyParamCaption}
+\item[{const std\+::string}]{seq\+\_\+str, }
+\item[{std\+::vector$<$ unsigned $>$ \&}]{seq}
+\end{DoxyParamCaption}
+)}\label{utils_8hpp_a384799100357de20e8aeb55c7d1fac64}
+
+
+Parse a sequence of number given as a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seq\+\_\+str} & the string to parse \\
+\hline
+{\em seq} & the vector of numbers \\
+\hline
+\end{DoxyParams}
+\hypertarget{utils_8hpp_a96a1ff513794c047658d4bd461ff6add}{}\index{utils.\+hpp@{utils.\+hpp}!print\+Desc@{print\+Desc}}
+\index{print\+Desc@{print\+Desc}!utils.\+hpp@{utils.\+hpp}}
+\subsubsection[{print\+Desc}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Desc (
+\begin{DoxyParamCaption}
+\item[{{\bf Params}}]{params, }
+\item[{ostream $\ast$}]{logger}
+\end{DoxyParamCaption}
+)}\label{utils_8hpp_a96a1ff513794c047658d4bd461ff6add}
+
+
+print the description of the parameters 
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & a param holder structure \\
+\hline
+{\em logger} & the output stream to print on \\
+\hline
+\end{DoxyParams}
+\hypertarget{utils_8hpp_aa683093645a1f31ec9f1a0db9087f315}{}\index{utils.\+hpp@{utils.\+hpp}!read\+Args@{read\+Args}}
+\index{read\+Args@{read\+Args}!utils.\+hpp@{utils.\+hpp}}
+\subsubsection[{read\+Args}]{\setlength{\rightskip}{0pt plus 5cm}void read\+Args (
+\begin{DoxyParamCaption}
+\item[{const int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}, }
+\item[{std\+::map$<$ std\+::string, std\+::string $>$ \&}]{args}
+\end{DoxyParamCaption}
+)}\label{utils_8hpp_aa683093645a1f31ec9f1a0db9087f315}
+
+
+Parse the arguments from the command line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & the number of arguments to parse \\
+\hline
+{\em argv} & the vector of arguments given as strings \\
+\hline
+{\em args} & a map containing pairs of key/value strings \\
+\hline
+\end{DoxyParams}
+\hypertarget{utils_8hpp_a79f04d7f6ff9cd3caae4cdda562e5a01}{}\index{utils.\+hpp@{utils.\+hpp}!read\+C\+I\+F\+A\+R10@{read\+C\+I\+F\+A\+R10}}
+\index{read\+C\+I\+F\+A\+R10@{read\+C\+I\+F\+A\+R10}!utils.\+hpp@{utils.\+hpp}}
+\subsubsection[{read\+C\+I\+F\+A\+R10}]{\setlength{\rightskip}{0pt plus 5cm}int read\+C\+I\+F\+A\+R10 (
+\begin{DoxyParamCaption}
+\item[{const std\+::string}]{filepath, }
+\item[{My\+Matrix \&}]{images, }
+\item[{My\+Vector \&}]{labels}
+\end{DoxyParamCaption}
+)}\label{utils_8hpp_a79f04d7f6ff9cd3caae4cdda562e5a01}
+
+
+read the C\+I\+F\+A\+R-\/10 images 
+
+
+\begin{DoxyParams}{Parameters}
+{\em images} & the design matrix of the images \\
+\hline
+{\em labels} & the labels associated to the images (same order than previous function) \\
+\hline
+\end{DoxyParams}
+\hypertarget{utils_8hpp_a29b18fe301e0927dd6b955511b4f713b}{}\index{utils.\+hpp@{utils.\+hpp}!read\+M\+N\+I\+S\+T@{read\+M\+N\+I\+S\+T}}
+\index{read\+M\+N\+I\+S\+T@{read\+M\+N\+I\+S\+T}!utils.\+hpp@{utils.\+hpp}}
+\subsubsection[{read\+M\+N\+I\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}void read\+M\+N\+I\+S\+T (
+\begin{DoxyParamCaption}
+\item[{const string}]{filename, }
+\item[{My\+Matrix \&}]{images, }
+\item[{bool}]{invert\+\_\+pixel}
+\end{DoxyParamCaption}
+)}\label{utils_8hpp_a29b18fe301e0927dd6b955511b4f713b}
+
+
+read the M\+N\+I\+S\+T images 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & the filename of the M\+N\+I\+S\+T data file \\
+\hline
+{\em images} & the design matrix of the images \\
+\hline
+{\em invert\+\_\+pixel} & a flag to invert the pixel of the images \\
+\hline
+\end{DoxyParams}
+\hypertarget{utils_8hpp_a02aa568999be47b9682eb358a6b1ae6e}{}\index{utils.\+hpp@{utils.\+hpp}!read\+M\+N\+I\+S\+T\+Label@{read\+M\+N\+I\+S\+T\+Label}}
+\index{read\+M\+N\+I\+S\+T\+Label@{read\+M\+N\+I\+S\+T\+Label}!utils.\+hpp@{utils.\+hpp}}
+\subsubsection[{read\+M\+N\+I\+S\+T\+Label}]{\setlength{\rightskip}{0pt plus 5cm}void read\+M\+N\+I\+S\+T\+Label (
+\begin{DoxyParamCaption}
+\item[{const string}]{filename, }
+\item[{My\+Vector \&}]{labels}
+\end{DoxyParamCaption}
+)}\label{utils_8hpp_a02aa568999be47b9682eb358a6b1ae6e}
+
+
+read the M\+N\+I\+S\+T labels 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & the filename of the M\+N\+I\+S\+T data file \\
+\hline
+{\em labels} & the labels associated to the images (same order than previous function) \\
+\hline
+\end{DoxyParams}
+\hypertarget{utils_8hpp_a0a096ffad5fdb0a4a5e65356c9c86306}{}\index{utils.\+hpp@{utils.\+hpp}!Reverse\+Int@{Reverse\+Int}}
+\index{Reverse\+Int@{Reverse\+Int}!utils.\+hpp@{utils.\+hpp}}
+\subsubsection[{Reverse\+Int}]{\setlength{\rightskip}{0pt plus 5cm}int Reverse\+Int (
+\begin{DoxyParamCaption}
+\item[{const int}]{i}
+\end{DoxyParamCaption}
+)}\label{utils_8hpp_a0a096ffad5fdb0a4a5e65356c9c86306}
+
+
+Implementation of the change of encoding. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & the variable to transform \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the transformed variable 
+\end{DoxyReturn}
+\hypertarget{utils_8hpp_a5839158679f93bc5a833ecb09154adff}{}\index{utils.\+hpp@{utils.\+hpp}!set\+Params@{set\+Params}}
+\index{set\+Params@{set\+Params}!utils.\+hpp@{utils.\+hpp}}
+\subsubsection[{set\+Params}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Params (
+\begin{DoxyParamCaption}
+\item[{const std\+::string}]{algo, }
+\item[{std\+::map$<$ std\+::string, std\+::string $>$}]{args, }
+\item[{{\bf Params} \&}]{params}
+\end{DoxyParamCaption}
+)}\label{utils_8hpp_a5839158679f93bc5a833ecb09154adff}
+
+
+Set the default parameters according to the chosen algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em algo} & the name of the algorithm \\
+\hline
+{\em args} & a map containing pairs of key/value strings \\
+\hline
+{\em params} & a param holder structure \\
+\hline
+\end{DoxyParams}
+\hypertarget{utils_8hpp_a6df4dc95a46aec52f95f8d7c0c7a30af}{}\index{utils.\+hpp@{utils.\+hpp}!set\+Params\+From\+Args@{set\+Params\+From\+Args}}
+\index{set\+Params\+From\+Args@{set\+Params\+From\+Args}!utils.\+hpp@{utils.\+hpp}}
+\subsubsection[{set\+Params\+From\+Args}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Params\+From\+Args (
+\begin{DoxyParamCaption}
+\item[{std\+::map$<$ std\+::string, std\+::string $>$ \&}]{args, }
+\item[{{\bf Params} \&}]{params}
+\end{DoxyParamCaption}
+)}\label{utils_8hpp_a6df4dc95a46aec52f95f8d7c0c7a30af}
+
+
+Fill the params holder structure with a dictionnary of key/value strings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & a map containing pairs of key/value strings \\
+\hline
+{\em params} & a param holder structure \\
+\hline
+\end{DoxyParams}
+\hypertarget{utils_8hpp_a0ee2ecc555aaa5b95a336c1d6b26a178}{}\index{utils.\+hpp@{utils.\+hpp}!set\+Params\+From\+File@{set\+Params\+From\+File}}
+\index{set\+Params\+From\+File@{set\+Params\+From\+File}!utils.\+hpp@{utils.\+hpp}}
+\subsubsection[{set\+Params\+From\+File}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Params\+From\+File (
+\begin{DoxyParamCaption}
+\item[{const std\+::string}]{filename, }
+\item[{std\+::map$<$ std\+::string, std\+::string $>$ \&}]{args, }
+\item[{{\bf Params} \&}]{params}
+\end{DoxyParamCaption}
+)}\label{utils_8hpp_a0ee2ecc555aaa5b95a336c1d6b26a178}
+
+
+Read the arguments and save them into the parameters holder structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & the path of the Y\+A\+M\+L file \\
+\hline
+{\em args} & a map containing pairs of key/value strings \\
+\hline
+{\em params} & a param holder structure \\
+\hline
+\end{DoxyParams}

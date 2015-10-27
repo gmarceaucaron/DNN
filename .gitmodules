@@ -1,0 +1,6 @@
+[submodule "Doxygen/html"]
+	path = Doxygen/html
+	url = https://github.com/gmarceaucaron/DNN.git
+[submodule "doc/html"]
+	path = doc/html
+	url = https://github.com/gmarceaucaron/DNN.git

@@ -1,0 +1,207 @@
+\hypertarget{nn__ops__sp__conv_8hpp}{}\section{nn\+\_\+ops\+\_\+sp\+\_\+conv.\+hpp File Reference}
+\label{nn__ops__sp__conv_8hpp}\index{nn\+\_\+ops\+\_\+sp\+\_\+conv.\+hpp@{nn\+\_\+ops\+\_\+sp\+\_\+conv.\+hpp}}
+
+
+Implementation of the functions required for neural networks.  
+
+
+{\ttfamily \#include $<$functional$>$}\\*
+{\ttfamily \#include $<$Eigen/\+Dense$>$}\\*
+{\ttfamily \#include $<$Eigen/\+Sparse\+Core$>$}\\*
+{\ttfamily \#include $<$algorithm$>$}\\*
+{\ttfamily \#include $<$assert.\+h$>$}\\*
+{\ttfamily \#include $<$limits$>$}\\*
+{\ttfamily \#include \char`\"{}utils.\+hpp\char`\"{}}\\*
+Include dependency graph for nn\+\_\+ops\+\_\+sp\+\_\+conv.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nn__ops__sp__conv_8hpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a098dfb7eceed6e3e86c4866ffd2369d1}{}void {\bfseries init\+Sliding\+Metric} (const std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Matrix $>$ \&p\+Mii, std\+::vector$<$ My\+Matrix $>$ \&p\+M0i, std\+::vector$<$ My\+Vector $>$ \&p\+M00)\label{nn__ops__sp__conv_8hpp_a098dfb7eceed6e3e86c4866ffd2369d1}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a2d1a1a57b9ab6fcf73dac5906c9abd04}{}void {\bfseries transpose\+Conv\+W} (const My\+Matrix \&conv\+\_\+\+W, const unsigned n\+\_\+chan, const unsigned Hf, My\+Matrix \&conv\+\_\+\+W\+\_\+\+T)\label{nn__ops__sp__conv_8hpp_a2d1a1a57b9ab6fcf73dac5906c9abd04}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a91189f463ca2a137929752d66328acc5}{}void {\bfseries init\+Full\+Layer} (const unsigned n\+\_\+act0, const unsigned n\+\_\+act1, const double sigma, My\+Matrix \&W)\label{nn__ops__sp__conv_8hpp_a91189f463ca2a137929752d66328acc5}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_ac180a953c780bb98064e69c211d59dc9}{}void {\bfseries init\+Sparse\+Layer} (const unsigned sparsity, const unsigned n\+\_\+act0, const unsigned n\+\_\+act1, const double sigma, unsigned \&param\+\_\+counter, std\+::vector$<$ Sp\+Entry $>$ \&coeff)\label{nn__ops__sp__conv_8hpp_ac180a953c780bb98064e69c211d59dc9}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a9e8b09d7012b01113c26ff54bd026cd9}{}unsigned {\bfseries init\+Conv\+Layer} (const std\+::vector$<$ \hyperlink{struct_conv_layer_params}{Conv\+Layer\+Params} $>$ \&conv\+\_\+params, std\+::vector$<$ My\+Matrix $>$ \&conv\+W, std\+::vector$<$ My\+Matrix $>$ \&conv\+W\+\_\+\+T, std\+::vector$<$ My\+Vector $>$ \&conv\+B)\label{nn__ops__sp__conv_8hpp_a9e8b09d7012b01113c26ff54bd026cd9}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_afd66654e77a1b2693290002af0efbac1}{}int {\bfseries init\+Network} (const std\+::vector$<$ unsigned $>$ \&nn\+\_\+arch, const std\+::string act\+\_\+func, const unsigned sparsity, const std\+::vector$<$ \hyperlink{struct_conv_layer_params}{Conv\+Layer\+Params} $>$ \&conv\+\_\+params, const std\+::vector$<$ \hyperlink{struct_pool_layer_params}{Pool\+Layer\+Params} $>$ \&pool\+\_\+params, My\+Matrix \&W\+\_\+out, std\+::vector$<$ My\+Sp\+Matrix $>$ \&W, std\+::vector$<$ My\+Sp\+Matrix $>$ \&Wt, std\+::vector$<$ My\+Vector $>$ \&B, std\+::vector$<$ My\+Matrix $>$ \&conv\+W, std\+::vector$<$ My\+Matrix $>$ \&conv\+W\+\_\+\+T, std\+::vector$<$ My\+Vector $>$ \&conv\+B)\label{nn__ops__sp__conv_8hpp_afd66654e77a1b2693290002af0efbac1}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a22f109ce3d23796de9d34fb9eee73040}{}double {\bfseries sign\+Func} (double x)\label{nn__ops__sp__conv_8hpp_a22f109ce3d23796de9d34fb9eee73040}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a03a2f1c37574a2bc61630b6e5bf86dcf}{}double {\bfseries square\+Func} (double x)\label{nn__ops__sp__conv_8hpp_a03a2f1c37574a2bc61630b6e5bf86dcf}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a6ceeb10733d64ab2587e136e884c2ec8}{}double {\bfseries sqrt\+Func} (double x)\label{nn__ops__sp__conv_8hpp_a6ceeb10733d64ab2587e136e884c2ec8}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a6bac3899a024aa93b77e99e169f1e86c}{}double {\bfseries sum\+Cst\+Func} (double x, double cst)\label{nn__ops__sp__conv_8hpp_a6bac3899a024aa93b77e99e169f1e86c}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a4c86f2557fe76d7b0ca7c5111eb7927b}{}void {\bfseries softmax} (const My\+Matrix \&a, My\+Matrix \&out)\label{nn__ops__sp__conv_8hpp_a4c86f2557fe76d7b0ca7c5111eb7927b}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_aa125fb3ba2bec422df3857be6097239a}{}void \hyperlink{nn__ops__sp__conv_8hpp_aa125fb3ba2bec422df3857be6097239a}{logistic} (const bool deriv\+\_\+flag, const My\+Matrix \&z, My\+Matrix \&a, My\+Matrix \&ap)\label{nn__ops__sp__conv_8hpp_aa125fb3ba2bec422df3857be6097239a}
+
+\begin{DoxyCompactList}\small\item\em Activation functions. \end{DoxyCompactList}\item 
+\hypertarget{nn__ops__sp__conv_8hpp_aea7d4da56658e748deb416a1a132700a}{}void {\bfseries my\+\_\+tanh} (const bool deriv\+\_\+flag, const My\+Matrix \&z, My\+Matrix \&a, My\+Matrix \&ap)\label{nn__ops__sp__conv_8hpp_aea7d4da56658e748deb416a1a132700a}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a7ee597a1779e64682c57c86576964432}{}void {\bfseries relu} (const bool deriv\+\_\+flag, const My\+Matrix \&z, My\+Matrix \&a, My\+Matrix \&ap)\label{nn__ops__sp__conv_8hpp_a7ee597a1779e64682c57c86576964432}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_ac56dfda8be864dadf5db85c56978171d}{}void {\bfseries dropout} (const double prob, My\+Matrix \&A, My\+Matrix \&B)\label{nn__ops__sp__conv_8hpp_ac56dfda8be864dadf5db85c56978171d}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_afe6393d9948ae9a81cb1292aad353c48}{}void {\bfseries dropout} (const double prob, My\+Matrix \&A)\label{nn__ops__sp__conv_8hpp_afe6393d9948ae9a81cb1292aad353c48}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_ab3c3dfed86a314f2df7557c50cd455d7}{}void {\bfseries build\+Conv\+Matrix} (const unsigned n\+\_\+img, const unsigned conv\+\_\+\+N1, const unsigned conv\+\_\+\+N2, const unsigned F, const unsigned S, const unsigned P, const My\+Matrix \&conv\+\_\+layer, My\+Matrix \&conv\+\_\+matrix)\label{nn__ops__sp__conv_8hpp_ab3c3dfed86a314f2df7557c50cd455d7}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a1fce4d87ddb93dde916eeafd9e724f59}{}void {\bfseries pool\+Max} (const unsigned n\+\_\+img, const unsigned conv\+\_\+\+N1, const unsigned conv\+\_\+\+N2, const unsigned F, const unsigned S, const My\+Matrix \&conv\+\_\+layer, My\+Matrix \&pool\+\_\+layer, std\+::vector$<$ unsigned $>$ \&pool\+\_\+idx\+\_\+x, std\+::vector$<$ unsigned $>$ \&pool\+\_\+idx\+\_\+y)\label{nn__ops__sp__conv_8hpp_a1fce4d87ddb93dde916eeafd9e724f59}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_ad89e254b0d693484e43a8fc7d73b11db}{}void {\bfseries fprop} (const bool dropout\+\_\+flag, const Activation\+Function \&act\+\_\+func, const std\+::vector$<$ My\+Sp\+Matrix $>$ \&W, const My\+Matrix \&W\+\_\+out, const std\+::vector$<$ My\+Vector $>$ \&B, const My\+Matrix \&X\+\_\+batch, std\+::vector$<$ My\+Matrix $>$ \&Z, std\+::vector$<$ My\+Matrix $>$ \&A, std\+::vector$<$ My\+Matrix $>$ \&Ap)\label{nn__ops__sp__conv_8hpp_ad89e254b0d693484e43a8fc7d73b11db}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a14a70839d56b16d2e5fe814a2d1079e8}{}void {\bfseries fprop} (const bool dropout\+\_\+flag, const Activation\+Function \&act\+\_\+func, const std\+::vector$<$ My\+Matrix $>$ \&W, const std\+::vector$<$ My\+Vector $>$ \&B, const My\+Matrix \&X\+\_\+batch, std\+::vector$<$ My\+Matrix $>$ \&Z, std\+::vector$<$ My\+Matrix $>$ \&A, std\+::vector$<$ My\+Matrix $>$ \&Ap)\label{nn__ops__sp__conv_8hpp_a14a70839d56b16d2e5fe814a2d1079e8}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_ab863f7d41b9e0d9d104779c802c60b4d}{}void {\bfseries conv\+Fprop} (const unsigned batch\+\_\+size, const std\+::vector$<$ \hyperlink{struct_conv_layer_params}{Conv\+Layer\+Params} $>$ \&conv\+\_\+params, const std\+::vector$<$ \hyperlink{struct_pool_layer_params}{Pool\+Layer\+Params} $>$ \&pool\+\_\+params, const Activation\+Function \&act\+\_\+func, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+W, const std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+\+B, const My\+Matrix \&X\+\_\+batch, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+A, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+Ap, My\+Matrix \&z0, std\+::vector$<$ std\+::vector$<$ unsigned $>$$>$ \&pool\+Idx\+X, std\+::vector$<$ std\+::vector$<$ unsigned $>$$>$ \&pool\+Idx\+Y)\label{nn__ops__sp__conv_8hpp_ab863f7d41b9e0d9d104779c802c60b4d}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_ab1ebc413809be09e253f6367625023e2}{}void {\bfseries bprop} (const std\+::vector$<$ My\+Matrix $>$ \&W, const std\+::vector$<$ My\+Matrix $>$ \&Ap, std\+::vector$<$ My\+Matrix $>$ \&grad\+B)\label{nn__ops__sp__conv_8hpp_ab1ebc413809be09e253f6367625023e2}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_aa130f0262a0ae826b2d069907e5560eb}{}void {\bfseries bprop} (const std\+::vector$<$ My\+Sp\+Matrix $>$ \&Wt, const My\+Matrix \&W\+\_\+out, const std\+::vector$<$ My\+Matrix $>$ \&Ap, std\+::vector$<$ My\+Matrix $>$ \&grad\+B)\label{nn__ops__sp__conv_8hpp_aa130f0262a0ae826b2d069907e5560eb}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a86d5271f3402baee41e3e757fa2327a2}{}void {\bfseries conv\+Bprop} (const unsigned batch\+\_\+size, const std\+::vector$<$ \hyperlink{struct_conv_layer_params}{Conv\+Layer\+Params} $>$ \&conv\+\_\+params, const std\+::vector$<$ \hyperlink{struct_pool_layer_params}{Pool\+Layer\+Params} $>$ \&pool\+\_\+params, const std\+::vector$<$ My\+Matrix $>$ \&conv\+W\+\_\+\+T, const std\+::vector$<$ My\+Matrix $>$ \&conv\+Ap, const My\+Matrix \&pool\+\_\+grad\+B, std\+::vector$<$ My\+Matrix $>$ \&grad\+B, std\+::vector$<$ std\+::vector$<$ unsigned $>$$>$ \&pool\+Idx\+X, std\+::vector$<$ std\+::vector$<$ unsigned $>$$>$ \&pool\+Idx\+Y)\label{nn__ops__sp__conv_8hpp_a86d5271f3402baee41e3e757fa2327a2}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a1ae7e3f7a35b27279032f555e23f1532}{}void {\bfseries qd\+Bpm\+Bprop} (const std\+::vector$<$ My\+Matrix $>$ \&W, const std\+::vector$<$ My\+Matrix $>$ \&Ap, std\+::vector$<$ My\+Matrix $>$ \&bp\+\_\+grad\+B)\label{nn__ops__sp__conv_8hpp_a1ae7e3f7a35b27279032f555e23f1532}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a705f3aa9a6c6ef0892665786b5d35bf2}{}void {\bfseries sparse\+Outer\+Product} (const unsigned batch\+\_\+size, const My\+Sp\+Matrix \&W, const My\+Matrix \&grad\+B, const My\+Matrix \&A, const double mat\+\_\+reg, My\+Sp\+Matrix \&dw)\label{nn__ops__sp__conv_8hpp_a705f3aa9a6c6ef0892665786b5d35bf2}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_aaa5dfcccaa4f859b162005465984f40e}{}{\footnotesize template$<$class T $>$ }\\void {\bfseries update\+Param} (const double eta, const std\+::string regularizer, const double lambda, const T \&dparams, T \&params)\label{nn__ops__sp__conv_8hpp_aaa5dfcccaa4f859b162005465984f40e}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_aa13095af58fba0f61c6912fa59ceebda}{}void {\bfseries update\+Layer} (const double eta, const unsigned batch\+\_\+size, const My\+Matrix \&grad\+B, const My\+Matrix \&A, const std\+::string regularizer, const double lambda, My\+Sp\+Matrix \&W, My\+Sp\+Matrix \&Wt, My\+Vector \&B)\label{nn__ops__sp__conv_8hpp_aa13095af58fba0f61c6912fa59ceebda}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a39b70ca806dcb420c8b26ff5adb7a25c}{}void {\bfseries update} (const double eta, const std\+::vector$<$ My\+Matrix $>$ \&grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, My\+Matrix \&W\+\_\+out, std\+::vector$<$ My\+Sp\+Matrix $>$ \&W, std\+::vector$<$ My\+Sp\+Matrix $>$ \&Wt, std\+::vector$<$ My\+Vector $>$ \&B)\label{nn__ops__sp__conv_8hpp_a39b70ca806dcb420c8b26ff5adb7a25c}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_ac8a4ddb1d085a6e8f288882dc5e2273f}{}void {\bfseries update} (const double eta, const std\+::vector$<$ My\+Matrix $>$ \&grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Vector $>$ \&B)\label{nn__ops__sp__conv_8hpp_ac8a4ddb1d085a6e8f288882dc5e2273f}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_ac8b3063f74f3e00895c31d569c68aaa2}{}void {\bfseries conv\+Update} (const double eta, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+W, std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+\+B)\label{nn__ops__sp__conv_8hpp_ac8b3063f74f3e00895c31d569c68aaa2}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a2d211cd2f6f6acab9da2c708d3cce3f2}{}void {\bfseries conv\+Update} (const unsigned batch\+\_\+size, const double eta, const std\+::vector$<$ \hyperlink{struct_conv_layer_params}{Conv\+Layer\+Params} $>$ \&conv\+\_\+params, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+W, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+W\+\_\+\+T, std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+\+B)\label{nn__ops__sp__conv_8hpp_a2d211cd2f6f6acab9da2c708d3cce3f2}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a9eac26b0f319ddcafb904deca1c8a416}{}void {\bfseries conv\+Update\+Test} (const unsigned batch\+\_\+size, const double eta, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+W, std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+\+B, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+update, std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+update\+B)\label{nn__ops__sp__conv_8hpp_a9eac26b0f319ddcafb904deca1c8a416}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a4bc298a63450bce97f16047a8be8c0cb}{}void {\bfseries test\+Update} (const double eta, const std\+::vector$<$ My\+Matrix $>$ \&grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Vector $>$ \&B, std\+::vector$<$ My\+Matrix $>$ \&D\+W, std\+::vector$<$ My\+Vector $>$ \&D\+B)\label{nn__ops__sp__conv_8hpp_a4bc298a63450bce97f16047a8be8c0cb}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a3c2822a2bbb5ca3701af33bbc402e54f}{}void {\bfseries adagrad\+Update} (const double eta, const std\+::vector$<$ My\+Matrix $>$ \&grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, const double mat\+\_\+reg, const double autocorr, std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Vector $>$ \&B, std\+::vector$<$ My\+Matrix $>$ \&mu\+\_\+d\+W, std\+::vector$<$ My\+Vector $>$ \&mu\+\_\+d\+B)\label{nn__ops__sp__conv_8hpp_a3c2822a2bbb5ca3701af33bbc402e54f}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_ab5839ec0cc5d7bcbf94b68562f365bee}{}void {\bfseries compute\+Mc\+Error} (const My\+Matrix \&out, My\+Matrix \&mc\+\_\+error)\label{nn__ops__sp__conv_8hpp_ab5839ec0cc5d7bcbf94b68562f365bee}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a41422fe592bc3974f9dbcde6e1422bfa}{}void {\bfseries compute\+Lazy\+Error} (const My\+Matrix \&out, const My\+Matrix \&one\+\_\+hot\+\_\+batch, My\+Matrix \&lazy\+\_\+error)\label{nn__ops__sp__conv_8hpp_a41422fe592bc3974f9dbcde6e1422bfa}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a411fe32e99240bed4d61e7dea2c3c162}{}void {\bfseries update\+Conv\+Metric} (const bool init\+\_\+flag, const double gamma, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+Mii, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+M0i, std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+\+M00, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+p\+Mii, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+p\+M0i, std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+p\+M00)\label{nn__ops__sp__conv_8hpp_a411fe32e99240bed4d61e7dea2c3c162}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a7d9749cce5f1fa2022c24d6c24576ea2}{}void {\bfseries update\+Metric} (const bool init\+\_\+flag, const double gamma, My\+Matrix \&Mii\+\_\+out, My\+Matrix \&M0i\+\_\+out, My\+Vector \&M00\+\_\+out, std\+::vector$<$ My\+Sp\+Matrix $>$ \&Mii, std\+::vector$<$ My\+Sp\+Matrix $>$ \&M0i, std\+::vector$<$ My\+Vector $>$ \&M00, My\+Matrix \&p\+Mii\+\_\+out, My\+Matrix \&p\+M0i\+\_\+out, My\+Vector \&p\+M00\+\_\+out, std\+::vector$<$ My\+Sp\+Matrix $>$ \&p\+Mii, std\+::vector$<$ My\+Sp\+Matrix $>$ \&p\+M0i, std\+::vector$<$ My\+Vector $>$ \&p\+M00)\label{nn__ops__sp__conv_8hpp_a7d9749cce5f1fa2022c24d6c24576ea2}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a8b089ff4f32d95bcacc9a7cfa7bc1ef6}{}void {\bfseries update\+Metric} (const bool init\+\_\+flag, const double gamma, std\+::vector$<$ My\+Matrix $>$ \&Mii, std\+::vector$<$ My\+Matrix $>$ \&M0i, std\+::vector$<$ My\+Vector $>$ \&M00, std\+::vector$<$ My\+Matrix $>$ \&p\+Mii, std\+::vector$<$ My\+Matrix $>$ \&p\+M0i, std\+::vector$<$ My\+Vector $>$ \&p\+M00)\label{nn__ops__sp__conv_8hpp_a8b089ff4f32d95bcacc9a7cfa7bc1ef6}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_afc59d7c69fc14a16d2fb47f309f3f63b}{}void {\bfseries update\+Metric} (const bool init\+\_\+flag, const double gamma, std\+::vector$<$ My\+Matrix $>$ \&Mii, std\+::vector$<$ My\+Vector $>$ \&M00, std\+::vector$<$ My\+Matrix $>$ \&p\+Mii, std\+::vector$<$ My\+Vector $>$ \&p\+M00)\label{nn__ops__sp__conv_8hpp_afc59d7c69fc14a16d2fb47f309f3f63b}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_aa252e74b217c2b2665954a2a39f798f9}{}void {\bfseries build\+Conv\+Q\+D\+Metric} (const unsigned batch\+\_\+size, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+grad\+B\+\_\+sq, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+A, const My\+Matrix \&X\+\_\+batch, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+W, const double mat\+\_\+reg, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+Mii, std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+M0i, std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+\+M00)\label{nn__ops__sp__conv_8hpp_aa252e74b217c2b2665954a2a39f798f9}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a47483f81b78fb54da696f104892c2ca2}{}void {\bfseries build\+Q\+D\+Metric} (const std\+::vector$<$ My\+Matrix $>$ \&grad\+B\+\_\+sq, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const My\+Matrix \&W\+\_\+out, const std\+::vector$<$ My\+Sp\+Matrix $>$ \&W, const double mat\+\_\+reg, My\+Matrix \&Mii\+\_\+out, My\+Matrix \&M0i\+\_\+out, My\+Vector \&M00\+\_\+out, std\+::vector$<$ My\+Sp\+Matrix $>$ \&Mii, std\+::vector$<$ My\+Sp\+Matrix $>$ \&M0i, std\+::vector$<$ My\+Vector $>$ \&M00)\label{nn__ops__sp__conv_8hpp_a47483f81b78fb54da696f104892c2ca2}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a873ca1a30adcb11f4d90563b14139122}{}void {\bfseries build\+Q\+D\+Metric} (const std\+::vector$<$ My\+Matrix $>$ \&grad\+B\+\_\+sq, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const std\+::vector$<$ My\+Matrix $>$ \&W, const double mat\+\_\+reg, std\+::vector$<$ My\+Matrix $>$ \&Mii, std\+::vector$<$ My\+Matrix $>$ \&M0i, std\+::vector$<$ My\+Vector $>$ \&M00)\label{nn__ops__sp__conv_8hpp_a873ca1a30adcb11f4d90563b14139122}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_aa0628205a0dd1fb71743bcea4ff051d5}{}void {\bfseries build\+Diag\+Metric} (const std\+::vector$<$ My\+Matrix $>$ \&grad\+B\+\_\+sq, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const std\+::vector$<$ My\+Matrix $>$ \&W, const double mat\+\_\+reg, std\+::vector$<$ My\+Matrix $>$ \&Mii, std\+::vector$<$ My\+Vector $>$ \&M00)\label{nn__ops__sp__conv_8hpp_aa0628205a0dd1fb71743bcea4ff051d5}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a050c802e634cac2c961948208c03867e}{}void {\bfseries qd\+Gradient} (const My\+Matrix \&Mii, const My\+Matrix \&M0i, const My\+Vector \&M00, const My\+Matrix \&G, const My\+Vector \&G0, My\+Matrix \&qd\+\_\+grad\+W, My\+Vector \&qd\+\_\+d\+Bias)\label{nn__ops__sp__conv_8hpp_a050c802e634cac2c961948208c03867e}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a9a3a3692225b27e139211621a77af74f}{}void {\bfseries qd\+Conv\+Gradient} (const My\+Matrix \&Mii, const My\+Matrix \&M0i, const My\+Vector \&M00, const My\+Matrix \&G, const My\+Vector \&G0, My\+Matrix \&qd\+\_\+grad\+W, My\+Vector \&qd\+\_\+d\+Bias)\label{nn__ops__sp__conv_8hpp_a9a3a3692225b27e139211621a77af74f}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_aa747fa4b0c6ffeb5d8036530d56b96fa}{}void {\bfseries diag\+Gradient} (const My\+Matrix \&Mii, const My\+Vector \&M00, const My\+Matrix \&G, const My\+Vector \&G0, My\+Matrix \&qd\+\_\+grad\+W, My\+Vector \&qd\+\_\+d\+Bias)\label{nn__ops__sp__conv_8hpp_aa747fa4b0c6ffeb5d8036530d56b96fa}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_ae2c1e45b6ccf7ec188a02d39a974391a}{}void {\bfseries qd\+Sp\+Gradient} (const My\+Sp\+Matrix \&W, const My\+Sp\+Matrix \&Mii, const My\+Sp\+Matrix \&M0i, const My\+Vector \&M00, const My\+Sp\+Matrix \&G, const My\+Vector \&G0, My\+Sp\+Matrix \&qd\+\_\+grad\+W, My\+Vector \&qd\+\_\+d\+Bias)\label{nn__ops__sp__conv_8hpp_ae2c1e45b6ccf7ec188a02d39a974391a}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a067de530a96b2e745f1c2c7533a0a01e}{}void {\bfseries op\+Update\+Layer} (const double eta, const unsigned batch\+\_\+size, const My\+Matrix \&grad\+B, const My\+Matrix \&A, const std\+::string regularizer, const double lambda, const My\+Sp\+Matrix \&Mii, const My\+Sp\+Matrix \&M0i, const My\+Vector \&M00, My\+Sp\+Matrix \&W, My\+Sp\+Matrix \&Wt, My\+Vector \&B)\label{nn__ops__sp__conv_8hpp_a067de530a96b2e745f1c2c7533a0a01e}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a5a372ad6a43f1c26470b5125125986ad}{}void {\bfseries update} (const double eta, const std\+::vector$<$ My\+Matrix $>$ \&grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Vector $>$ \&B, std\+::vector$<$ My\+Matrix $>$ \&Mii, std\+::vector$<$ My\+Matrix $>$ \&M0i, std\+::vector$<$ My\+Vector $>$ \&M00)\label{nn__ops__sp__conv_8hpp_a5a372ad6a43f1c26470b5125125986ad}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_ac7956c7ff61b1d4626db951c1e8d865a}{}void {\bfseries update} (const double eta, const std\+::vector$<$ My\+Matrix $>$ \&grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, My\+Matrix \&W\+\_\+out, std\+::vector$<$ My\+Sp\+Matrix $>$ \&W, std\+::vector$<$ My\+Sp\+Matrix $>$ \&Wt, std\+::vector$<$ My\+Vector $>$ \&B, My\+Matrix \&Mii\+\_\+out, My\+Matrix \&M0i\+\_\+out, My\+Vector \&M00\+\_\+out, std\+::vector$<$ My\+Sp\+Matrix $>$ \&Mii, std\+::vector$<$ My\+Sp\+Matrix $>$ \&M0i, std\+::vector$<$ My\+Vector $>$ \&M00)\label{nn__ops__sp__conv_8hpp_ac7956c7ff61b1d4626db951c1e8d865a}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a2be07c086229dee20135008288130b0c}{}void {\bfseries update} (const double eta, const std\+::vector$<$ My\+Matrix $>$ \&grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Vector $>$ \&B, std\+::vector$<$ My\+Matrix $>$ \&Mii, std\+::vector$<$ My\+Vector $>$ \&M00)\label{nn__ops__sp__conv_8hpp_a2be07c086229dee20135008288130b0c}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a07d054f437b06f4d5a4804fd29874b46}{}void {\bfseries update\+Test} (const double eta, const std\+::vector$<$ My\+Matrix $>$ \&grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Vector $>$ \&B, std\+::vector$<$ My\+Matrix $>$ \&Mii, std\+::vector$<$ My\+Matrix $>$ \&M0i, std\+::vector$<$ My\+Vector $>$ \&M00)\label{nn__ops__sp__conv_8hpp_a07d054f437b06f4d5a4804fd29874b46}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_ac5a8f1e4050fa2a7fcc16f5ceb5da5aa}{}void {\bfseries compute\+Loss} (const Activation\+Function \&act\+\_\+func, const unsigned batch\+\_\+size, const My\+Matrix \&X, const My\+Vector \&Y, const std\+::vector$<$ \hyperlink{struct_conv_layer_params}{Conv\+Layer\+Params} $>$ \&conv\+\_\+params, const std\+::vector$<$ \hyperlink{struct_pool_layer_params}{Pool\+Layer\+Params} $>$ \&pool\+\_\+params, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+W, const std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+\+B, const std\+::vector$<$ My\+Sp\+Matrix $>$ \&W, const My\+Matrix \&W\+\_\+out, const std\+::vector$<$ My\+Vector $>$ \&B, double \&loss, double \&accuracy)\label{nn__ops__sp__conv_8hpp_ac5a8f1e4050fa2a7fcc16f5ceb5da5aa}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_a92a9e060408807b558903421c287b92c}{}void {\bfseries eval\+Model} (const Activation\+Function \&eval\+\_\+act\+\_\+func, const \hyperlink{struct_params}{Params} \&params, const unsigned n\+\_\+batch, const unsigned n\+\_\+example, const My\+Matrix \&X, const My\+Vector \&Y, const std\+::vector$<$ \hyperlink{struct_conv_layer_params}{Conv\+Layer\+Params} $>$ \&conv\+\_\+params, const std\+::vector$<$ \hyperlink{struct_pool_layer_params}{Pool\+Layer\+Params} $>$ \&pool\+\_\+params, const std\+::vector$<$ My\+Matrix $>$ \&conv\+\_\+\+W, const std\+::vector$<$ My\+Vector $>$ \&conv\+\_\+\+B, My\+Matrix W\+\_\+out, std\+::vector$<$ My\+Sp\+Matrix $>$ \&W\+\_\+eval, std\+::vector$<$ My\+Vector $>$ \&B, double \&acc\+\_\+loss, double \&acc\+\_\+accuracy)\label{nn__ops__sp__conv_8hpp_a92a9e060408807b558903421c287b92c}
+
+\item 
+\hypertarget{nn__ops__sp__conv_8hpp_abdf2ed53acfc5b2df65b85c1f5d1970f}{}void {\bfseries adaptive\+Rule} (const double train\+\_\+loss, double \&prev\+\_\+loss, double \&eta, std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Vector $>$ \&B, std\+::vector$<$ My\+Matrix $>$ \&p\+Mii, std\+::vector$<$ My\+Matrix $>$ \&p\+M0i, std\+::vector$<$ My\+Vector $>$ \&p\+M00, std\+::vector$<$ My\+Matrix $>$ \&p\+W, std\+::vector$<$ My\+Vector $>$ \&p\+B, std\+::vector$<$ My\+Matrix $>$ \&pp\+Mii, std\+::vector$<$ My\+Matrix $>$ \&pp\+M0i, std\+::vector$<$ My\+Vector $>$ \&pp\+M00)\label{nn__ops__sp__conv_8hpp_abdf2ed53acfc5b2df65b85c1f5d1970f}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of the functions required for neural networks. 
+
+\begin{DoxyAuthor}{Author}
+Gaetan Marceau Caron \& Yann Ollivier 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}

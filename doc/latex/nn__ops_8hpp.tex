@@ -1,0 +1,1094 @@
+\hypertarget{nn__ops_8hpp}{}\section{nn\+\_\+ops.\+hpp File Reference}
+\label{nn__ops_8hpp}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+
+
+Implementation of the functions required for neural networks.  
+
+
+{\ttfamily \#include $<$functional$>$}\\*
+{\ttfamily \#include $<$Eigen/\+Dense$>$}\\*
+{\ttfamily \#include $<$algorithm$>$}\\*
+{\ttfamily \#include $<$assert.\+h$>$}\\*
+{\ttfamily \#include $<$limits$>$}\\*
+{\ttfamily \#include \char`\"{}utils.\+hpp\char`\"{}}\\*
+Include dependency graph for nn\+\_\+ops.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nn__ops_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{nn__ops_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{nn__ops_8hpp_a90b8525c0edded9e3420dc56dbb9332f}{init\+Weight} (const unsigned n\+\_\+act0, const unsigned n\+\_\+act1, const double sigma, My\+Matrix \&W)
+\begin{DoxyCompactList}\small\item\em Initialize the weights of a layer with a reweighted normal noise. \end{DoxyCompactList}\item 
+int \hyperlink{nn__ops_8hpp_a2a07778f5ff97c5d5581276d663ede6e}{init\+Network} (const std\+::vector$<$ unsigned $>$ \&nn\+\_\+arch, const std\+::string act\+\_\+func, std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Vector $>$ \&B)
+\begin{DoxyCompactList}\small\item\em Initialize the parameters of the Neural Network computational graph. \end{DoxyCompactList}\item 
+double \hyperlink{nn__ops_8hpp_a22f109ce3d23796de9d34fb9eee73040}{sign\+Func} (double x)
+\begin{DoxyCompactList}\small\item\em Implementation of the sign function. \end{DoxyCompactList}\item 
+double \hyperlink{nn__ops_8hpp_a03a2f1c37574a2bc61630b6e5bf86dcf}{square\+Func} (double x)
+\begin{DoxyCompactList}\small\item\em Implementation of the square function. \end{DoxyCompactList}\item 
+double \hyperlink{nn__ops_8hpp_a6ceeb10733d64ab2587e136e884c2ec8}{sqrt\+Func} (double x)
+\begin{DoxyCompactList}\small\item\em Implementation of the square-\/root function. \end{DoxyCompactList}\item 
+double \hyperlink{nn__ops_8hpp_a6bac3899a024aa93b77e99e169f1e86c}{sum\+Cst\+Func} (double x, double cst)
+\begin{DoxyCompactList}\small\item\em Implementation of the translation function. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_a4c86f2557fe76d7b0ca7c5111eb7927b}{softmax} (const My\+Matrix \&a, My\+Matrix \&out)
+\begin{DoxyCompactList}\small\item\em Implementation of the softmax function Take a matrix (n\+\_\+example X n\+\_\+class) of values and return a matrix (n\+\_\+example X n\+\_\+class) where each line is a probability distribution over the classes. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_a1ee99de11ae8d8f50b32c2037ffd1d1b}{logistic} (const bool deriv\+\_\+flag, const My\+Matrix \&z, My\+Matrix \&a, My\+Matrix \&da)
+\begin{DoxyCompactList}\small\item\em Implementation of the logistic function and its derivative. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_aa8e7c94ef2b705a126e52d0ea2fa9901}{my\+\_\+tanh} (const bool deriv\+\_\+flag, const My\+Matrix \&z, My\+Matrix \&a, My\+Matrix \&da)
+\begin{DoxyCompactList}\small\item\em Implementation of the tanh function and its derivative. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_af47e86a1783f4c04ee25301f3ec37866}{relu} (const bool deriv\+\_\+flag, const My\+Matrix \&z, My\+Matrix \&a, My\+Matrix \&da)
+\begin{DoxyCompactList}\small\item\em Implementation of the rectified linear unit (Re\+L\+U) function and its derivative. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_ac56dfda8be864dadf5db85c56978171d}{dropout} (const double prob, My\+Matrix \&A, My\+Matrix \&B)
+\begin{DoxyCompactList}\small\item\em Implementation of the dropout regularization technique. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_afe6393d9948ae9a81cb1292aad353c48}{dropout} (const double prob, My\+Matrix \&A)
+\begin{DoxyCompactList}\small\item\em Implementation of the dropout regularization technique. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_a333e03b7cdb8f33e9619edf27f56d6cb}{fprop} (const bool dropout\+\_\+flag, const double dropout\+\_\+prob, const Activation\+Function \&act\+\_\+func, const std\+::vector$<$ My\+Matrix $>$ \&W, const std\+::vector$<$ My\+Vector $>$ \&B, const My\+Matrix \&X\+\_\+batch, std\+::vector$<$ My\+Matrix $>$ \&Z, std\+::vector$<$ My\+Matrix $>$ \&A, std\+::vector$<$ My\+Matrix $>$ \&d\+A)
+\begin{DoxyCompactList}\small\item\em Implementation of the forward propagation algorithm. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_a1c7cf6b20b44ba081abe2a5e0110a599}{bprop} (const std\+::vector$<$ My\+Matrix $>$ \&W, const std\+::vector$<$ My\+Matrix $>$ \&d\+A, std\+::vector$<$ My\+Matrix $>$ \&grad\+B)
+\begin{DoxyCompactList}\small\item\em Implementation of the backpropagation algorithm. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\void \hyperlink{nn__ops_8hpp_aaa5dfcccaa4f859b162005465984f40e}{update\+Param} (const double eta, const std\+::string regularizer, const double lambda, const T \&dparams, T \&params)
+\begin{DoxyCompactList}\small\item\em Templated function for updating matrices or vectors. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_ac8a4ddb1d085a6e8f288882dc5e2273f}{update} (const double eta, const std\+::vector$<$ My\+Matrix $>$ \&grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Vector $>$ \&B)
+\begin{DoxyCompactList}\small\item\em Implementation of the update function of the gradient descent algorithm. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_a3c2822a2bbb5ca3701af33bbc402e54f}{adagrad\+Update} (const double eta, const std\+::vector$<$ My\+Matrix $>$ \&grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, const double mat\+\_\+reg, const double autocorr, std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Vector $>$ \&B, std\+::vector$<$ My\+Matrix $>$ \&mu\+\_\+d\+W, std\+::vector$<$ My\+Vector $>$ \&mu\+\_\+d\+B)
+\begin{DoxyCompactList}\small\item\em function that performs the adagrad update rule \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_a9a994e746ada8c2bd3f11b68114db234}{compute\+Loss} (const Activation\+Function \&act\+\_\+func, const My\+Matrix \&X, const My\+Vector \&Y, const std\+::vector$<$ My\+Matrix $>$ \&W, const std\+::vector$<$ My\+Vector $>$ \&B, double \&loss, double \&accuracy)
+\begin{DoxyCompactList}\small\item\em function that compute the Negative Log-\/likelihood and the accuracy of the model \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_ad4e3600f69eecf523fb78bb9ffd4ee24}{compute\+Loss} (const Activation\+Function \&act\+\_\+func, const My\+Matrix \&X, const My\+Vector \&Y, const std\+::vector$<$ My\+Matrix $>$ \&W, const std\+::vector$<$ My\+Vector $>$ \&B, const \hyperlink{struct_params}{Params} params, double \&loss, double \&accuracy)
+\begin{DoxyCompactList}\small\item\em function that compute the Negative Log-\/likelihood and the accuracy of the model (cannot be used with dropout since the mask will be activated!) \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_a99cafbd2955aafe43ad57a88f7f1db5c}{eval\+Model} (const Activation\+Function \&eval\+\_\+act\+\_\+func, const My\+Matrix \&X\+\_\+train, const My\+Matrix \&Y\+\_\+train, const My\+Matrix \&X\+\_\+valid, const My\+Matrix \&Y\+\_\+valid, const \hyperlink{struct_params}{Params} \&params, std\+::vector$<$ My\+Matrix $>$ W\+\_\+eval, std\+::vector$<$ My\+Vector $>$ B, double \&train\+\_\+loss, double \&train\+\_\+accuracy, double \&valid\+\_\+loss, double \&valid\+\_\+accuracy)
+\begin{DoxyCompactList}\small\item\em function that evaluate the model on the training dataset and the validation dataset \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_ac98a75118cb5c283016ee1d3009e4591}{update\+Stepsize} (const unsigned t, const double init\+\_\+eta, double \&eta)
+\begin{DoxyCompactList}\small\item\em simple implementation of a decreasing step-\/size for ensuring convergence \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_aa0628205a0dd1fb71743bcea4ff051d5}{build\+Diag\+Metric} (const std\+::vector$<$ My\+Matrix $>$ \&grad\+B\+\_\+sq, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const std\+::vector$<$ My\+Matrix $>$ \&W, const double mat\+\_\+reg, std\+::vector$<$ My\+Matrix $>$ \&Mii, std\+::vector$<$ My\+Vector $>$ \&M00)
+\begin{DoxyCompactList}\small\item\em Function that builds a diagonal metric from the gradient w.\+r.\+t. the pre-\/activation. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_a873ca1a30adcb11f4d90563b14139122}{build\+Q\+D\+Metric} (const std\+::vector$<$ My\+Matrix $>$ \&grad\+B\+\_\+sq, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const std\+::vector$<$ My\+Matrix $>$ \&W, const double mat\+\_\+reg, std\+::vector$<$ My\+Matrix $>$ \&Mii, std\+::vector$<$ My\+Matrix $>$ \&M0i, std\+::vector$<$ My\+Vector $>$ \&M00)
+\begin{DoxyCompactList}\small\item\em Function that builds a quasi-\/diagonal metric from the gradient w.\+r.\+t. the pre-\/activation. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_a8b089ff4f32d95bcacc9a7cfa7bc1ef6}{update\+Metric} (const bool init\+\_\+flag, const double gamma, std\+::vector$<$ My\+Matrix $>$ \&Mii, std\+::vector$<$ My\+Matrix $>$ \&M0i, std\+::vector$<$ My\+Vector $>$ \&M00, std\+::vector$<$ My\+Matrix $>$ \&p\+Mii, std\+::vector$<$ My\+Matrix $>$ \&p\+M0i, std\+::vector$<$ My\+Vector $>$ \&p\+M00)
+\begin{DoxyCompactList}\small\item\em Update the quasi-\/diagonal approximation of the metric with an exponential moving average. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_afc59d7c69fc14a16d2fb47f309f3f63b}{update\+Metric} (const bool init\+\_\+flag, const double gamma, std\+::vector$<$ My\+Matrix $>$ \&Mii, std\+::vector$<$ My\+Vector $>$ \&M00, std\+::vector$<$ My\+Matrix $>$ \&p\+Mii, std\+::vector$<$ My\+Vector $>$ \&p\+M00)
+\begin{DoxyCompactList}\small\item\em Update the diagonal approximation of the metric with an exponential moving average. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_a5aaf33307c7448b0ed1991deafc24db1}{qd\+Gradient} (const My\+Matrix \&Mii, const My\+Matrix \&M0i, const My\+Vector \&M00, const My\+Matrix \&d\+W, const My\+Vector \&d\+B, My\+Matrix \&qd\+\_\+d\+W, My\+Vector \&qd\+\_\+d\+B)
+\begin{DoxyCompactList}\small\item\em Compute the natural gradient with the quasi-\/diagonal approximation. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_af144ec609311b53a6c4d0cb6678932b9}{diag\+Gradient} (const My\+Matrix \&Mii, const My\+Vector \&M00, const My\+Matrix \&d\+W, const My\+Vector \&d\+B, My\+Matrix \&qd\+\_\+d\+W, My\+Vector \&qd\+\_\+d\+B)
+\begin{DoxyCompactList}\small\item\em Compute the natural gradient with the diagonal approximation. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_a5a372ad6a43f1c26470b5125125986ad}{update} (const double eta, const std\+::vector$<$ My\+Matrix $>$ \&grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Vector $>$ \&B, std\+::vector$<$ My\+Matrix $>$ \&Mii, std\+::vector$<$ My\+Matrix $>$ \&M0i, std\+::vector$<$ My\+Vector $>$ \&M00)
+\begin{DoxyCompactList}\small\item\em Implementation of the update function of the quasi-\/diagonal natural gradient descent algorithm. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_a2be07c086229dee20135008288130b0c}{update} (const double eta, const std\+::vector$<$ My\+Matrix $>$ \&grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Vector $>$ \&B, std\+::vector$<$ My\+Matrix $>$ \&Mii, std\+::vector$<$ My\+Vector $>$ \&M00)
+\begin{DoxyCompactList}\small\item\em Implementation of the update function of the diagonal natural gradient descent algorithm. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_abdf2ed53acfc5b2df65b85c1f5d1970f}{adaptive\+Rule} (const double train\+\_\+loss, double \&prev\+\_\+loss, double \&eta, std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Vector $>$ \&B, std\+::vector$<$ My\+Matrix $>$ \&p\+Mii, std\+::vector$<$ My\+Matrix $>$ \&p\+M0i, std\+::vector$<$ My\+Vector $>$ \&p\+M00, std\+::vector$<$ My\+Matrix $>$ \&p\+W, std\+::vector$<$ My\+Vector $>$ \&p\+B, std\+::vector$<$ My\+Matrix $>$ \&pp\+Mii, std\+::vector$<$ My\+Matrix $>$ \&pp\+M0i, std\+::vector$<$ My\+Vector $>$ \&pp\+M00)
+\begin{DoxyCompactList}\small\item\em Implementation of a simple 0.\+5/1.2 step-\/size adaptation rule. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_aa315c58532f165c406aa803c1524a9a8}{qd\+Bpm\+Bprop} (const std\+::vector$<$ My\+Matrix $>$ \&W, const std\+::vector$<$ My\+Matrix $>$ \&d\+A, std\+::vector$<$ My\+Matrix $>$ \&bp\+\_\+grad\+B)
+\begin{DoxyCompactList}\small\item\em Implementation of the metric backpropagation algorithm. \end{DoxyCompactList}\item 
+void \hyperlink{nn__ops_8hpp_ab5839ec0cc5d7bcbf94b68562f365bee}{compute\+Mc\+Error} (const My\+Matrix \&out, My\+Matrix \&mc\+\_\+error)
+\begin{DoxyCompactList}\small\item\em Function that sample a label randomly according to the output distribution and evaluate the gradient w.\+r.\+t. to the output This function is required by the algorithm qd\+M\+C\+Nat. \end{DoxyCompactList}\item 
+\hypertarget{nn__ops_8hpp_a098dfb7eceed6e3e86c4866ffd2369d1}{}void {\bfseries init\+Sliding\+Metric} (const std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Matrix $>$ \&p\+Mii, std\+::vector$<$ My\+Matrix $>$ \&p\+M0i, std\+::vector$<$ My\+Vector $>$ \&p\+M00)\label{nn__ops_8hpp_a098dfb7eceed6e3e86c4866ffd2369d1}
+
+\item 
+\hypertarget{nn__ops_8hpp_a63eea3fc804396e7f95d93380c997358}{}void {\bfseries compute\+I\+S\+Error} (const My\+Matrix \&out, const My\+Matrix \&one\+\_\+hot\+\_\+batch, const double q, My\+Matrix \&mc\+\_\+error)\label{nn__ops_8hpp_a63eea3fc804396e7f95d93380c997358}
+
+\item 
+\hypertarget{nn__ops_8hpp_a41422fe592bc3974f9dbcde6e1422bfa}{}void {\bfseries compute\+Lazy\+Error} (const My\+Matrix \&out, const My\+Matrix \&one\+\_\+hot\+\_\+batch, My\+Matrix \&lazy\+\_\+error)\label{nn__ops_8hpp_a41422fe592bc3974f9dbcde6e1422bfa}
+
+\item 
+\hypertarget{nn__ops_8hpp_a4bc298a63450bce97f16047a8be8c0cb}{}void {\bfseries test\+Update} (const double eta, const std\+::vector$<$ My\+Matrix $>$ \&grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Vector $>$ \&B, std\+::vector$<$ My\+Matrix $>$ \&D\+W, std\+::vector$<$ My\+Vector $>$ \&D\+B)\label{nn__ops_8hpp_a4bc298a63450bce97f16047a8be8c0cb}
+
+\item 
+\hypertarget{nn__ops_8hpp_a07d054f437b06f4d5a4804fd29874b46}{}void {\bfseries update\+Test} (const double eta, const std\+::vector$<$ My\+Matrix $>$ \&grad\+B, const std\+::vector$<$ My\+Matrix $>$ \&A, const My\+Matrix \&X\+\_\+batch, const std\+::string regularizer, const double lambda, std\+::vector$<$ My\+Matrix $>$ \&W, std\+::vector$<$ My\+Vector $>$ \&B, std\+::vector$<$ My\+Matrix $>$ \&Mii, std\+::vector$<$ My\+Matrix $>$ \&M0i, std\+::vector$<$ My\+Vector $>$ \&M00)\label{nn__ops_8hpp_a07d054f437b06f4d5a4804fd29874b46}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of the functions required for neural networks. 
+
+\begin{DoxyAuthor}{Author}
+Gaetan Marceau Caron \& Yann Ollivier 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\subsection{Function Documentation}
+\hypertarget{nn__ops_8hpp_a3c2822a2bbb5ca3701af33bbc402e54f}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!adagrad\+Update@{adagrad\+Update}}
+\index{adagrad\+Update@{adagrad\+Update}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{adagrad\+Update}]{\setlength{\rightskip}{0pt plus 5cm}void adagrad\+Update (
+\begin{DoxyParamCaption}
+\item[{const double}]{eta, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{grad\+B, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{A, }
+\item[{const My\+Matrix \&}]{X\+\_\+batch, }
+\item[{const std\+::string}]{regularizer, }
+\item[{const double}]{lambda, }
+\item[{const double}]{mat\+\_\+reg, }
+\item[{const double}]{autocorr, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{W, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{B, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{mu\+\_\+d\+W, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{mu\+\_\+d\+B}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_a3c2822a2bbb5ca3701af33bbc402e54f}
+
+
+function that performs the adagrad update rule 
+
+
+\begin{DoxyParams}{Parameters}
+{\em eta} & the gradient descent step-\/size \\
+\hline
+{\em grad\+B} & a standard vector of the gradient w.\+r.\+t. the pre-\/activation values (one per layer) \\
+\hline
+{\em A} & a standard vector of activation values (one per layer) \\
+\hline
+{\em X\+\_\+batch} & a matrix containing the training examples of the current minibatch \\
+\hline
+{\em regularizer} & the string of the norm regularizer (L1 or L2) \\
+\hline
+{\em lambda} & the amplitude of the regularization term \\
+\hline
+{\em mat\+\_\+reg} & a numerical regularization term s.\+t. there is no division by zero \\
+\hline
+{\em autocorr} & the autocorrelation coefficient of the adagrad update rule \\
+\hline
+{\em W} & a standard vector of weight matrices (one per layer) \\
+\hline
+{\em B} & a standard vector of bias vectors (one per layer) \\
+\hline
+{\em mu\+\_\+d\+W} & a standard vector of the rolling averages of the weight matrices (one per layer) \\
+\hline
+{\em mu\+\_\+d\+B} & a standard vector of the rolling averages of the bias vectors (one per layer) \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_abdf2ed53acfc5b2df65b85c1f5d1970f}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!adaptive\+Rule@{adaptive\+Rule}}
+\index{adaptive\+Rule@{adaptive\+Rule}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{adaptive\+Rule}]{\setlength{\rightskip}{0pt plus 5cm}void adaptive\+Rule (
+\begin{DoxyParamCaption}
+\item[{const double}]{train\+\_\+loss, }
+\item[{double \&}]{prev\+\_\+loss, }
+\item[{double \&}]{eta, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{W, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{B, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{p\+Mii, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{p\+M0i, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{p\+M00, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{p\+W, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{p\+B, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{pp\+Mii, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{pp\+M0i, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{pp\+M00}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_abdf2ed53acfc5b2df65b85c1f5d1970f}
+
+
+Implementation of a simple 0.\+5/1.2 step-\/size adaptation rule. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em train\+\_\+loss} & the negative log-\/likelihood associated to the current parameters \\
+\hline
+{\em prev\+\_\+loss} & the negative log-\/likelihood associated to the previous parameters \\
+\hline
+{\em eta} & the current step-\/size \\
+\hline
+{\em W} & a standard vector of weight matrices (one per layer) \\
+\hline
+{\em B} & a standard vector of bias vectors (one per layer) \\
+\hline
+{\em p\+Mii} & a standard vector of the exponential moving average of Mii \\
+\hline
+{\em p\+Mi0} & a standard vector of the exponential moving average of M0i \\
+\hline
+{\em p\+M00} & a standard vector of the exponential moving average of M00 \\
+\hline
+{\em p\+W} & a standard vector of weight matrices of the previous iteration (one per layer) \\
+\hline
+{\em p\+B} & a standard vector of bias vectors of the previous iteration (one per layer) \\
+\hline
+{\em pp\+Mii} & a standard vector of the exponential moving average of Mii of the previous iteration \\
+\hline
+{\em pp\+Mi0} & a standard vector of the exponential moving average of M0i of the previous iteration \\
+\hline
+{\em pp\+M00} & a standard vector of the exponential moving average of M00 of the previous iteration \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_a1c7cf6b20b44ba081abe2a5e0110a599}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!bprop@{bprop}}
+\index{bprop@{bprop}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{bprop}]{\setlength{\rightskip}{0pt plus 5cm}void bprop (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{W, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{d\+A, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{grad\+B}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_a1c7cf6b20b44ba081abe2a5e0110a599}
+
+
+Implementation of the backpropagation algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em W} & a standard vector of weight matrices (one per layer) \\
+\hline
+{\em d\+A} & a standard vector of the derivatives of the activation values (one per layer) \\
+\hline
+{\em grad\+B} & a standard vector of the gradient w.\+r.\+t. the pre-\/activation values (one per layer) \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_aa0628205a0dd1fb71743bcea4ff051d5}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!build\+Diag\+Metric@{build\+Diag\+Metric}}
+\index{build\+Diag\+Metric@{build\+Diag\+Metric}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{build\+Diag\+Metric}]{\setlength{\rightskip}{0pt plus 5cm}void build\+Diag\+Metric (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{grad\+B\+\_\+sq, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{A, }
+\item[{const My\+Matrix \&}]{X\+\_\+batch, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{W, }
+\item[{const double}]{mat\+\_\+reg, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{Mii, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{M00}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_aa0628205a0dd1fb71743bcea4ff051d5}
+
+
+Function that builds a diagonal metric from the gradient w.\+r.\+t. the pre-\/activation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grad\+B\+\_\+sq} & a standard vector of the square of the gradient w.\+r.\+t. the pre-\/activation values (one per layer) \\
+\hline
+{\em A} & a standard vector of activation values (one per layer) \\
+\hline
+{\em X\+\_\+batch} & a matrix containing the training examples of the current minibatch \\
+\hline
+{\em W} & a standard vector of weight matrices (one per layer) \\
+\hline
+{\em mat\+\_\+reg} & a numerical regularization term s.\+t. the metric is invertible \\
+\hline
+{\em Mii} & a standard vector of the diagonals of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+{\em M00} & a standard vector of the bias of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_a873ca1a30adcb11f4d90563b14139122}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!build\+Q\+D\+Metric@{build\+Q\+D\+Metric}}
+\index{build\+Q\+D\+Metric@{build\+Q\+D\+Metric}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{build\+Q\+D\+Metric}]{\setlength{\rightskip}{0pt plus 5cm}void build\+Q\+D\+Metric (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{grad\+B\+\_\+sq, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{A, }
+\item[{const My\+Matrix \&}]{X\+\_\+batch, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{W, }
+\item[{const double}]{mat\+\_\+reg, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{Mii, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{M0i, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{M00}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_a873ca1a30adcb11f4d90563b14139122}
+
+
+Function that builds a quasi-\/diagonal metric from the gradient w.\+r.\+t. the pre-\/activation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grad\+B\+\_\+sq} & a standard vector of the square of the gradient w.\+r.\+t. the pre-\/activation values (one per layer) \\
+\hline
+{\em A} & a standard vector of activation values (one per layer) \\
+\hline
+{\em X\+\_\+batch} & a matrix containing the training examples of the current minibatch \\
+\hline
+{\em W} & a standard vector of weight matrices (one per layer) \\
+\hline
+{\em mat\+\_\+reg} & a numerical regularization term s.\+t. the metric is invertible \\
+\hline
+{\em Mii} & a standard vector of the diagonals of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+{\em Mi0} & a standard vector of the weights time the bias (first line) of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+{\em M00} & a standard vector of the bias of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_a9a994e746ada8c2bd3f11b68114db234}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!compute\+Loss@{compute\+Loss}}
+\index{compute\+Loss@{compute\+Loss}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{compute\+Loss}]{\setlength{\rightskip}{0pt plus 5cm}void compute\+Loss (
+\begin{DoxyParamCaption}
+\item[{const Activation\+Function \&}]{act\+\_\+func, }
+\item[{const My\+Matrix \&}]{X, }
+\item[{const My\+Vector \&}]{Y, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{W, }
+\item[{const std\+::vector$<$ My\+Vector $>$ \&}]{B, }
+\item[{double \&}]{loss, }
+\item[{double \&}]{accuracy}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_a9a994e746ada8c2bd3f11b68114db234}
+
+
+function that compute the Negative Log-\/likelihood and the accuracy of the model 
+
+
+\begin{DoxyParams}{Parameters}
+{\em act\+\_\+func} & the reference of the activation function \\
+\hline
+{\em X} & a matrix containing the training examples \\
+\hline
+{\em Y} & a vector containing the labels of the examples \\
+\hline
+{\em W} & a standard vector of weight matrices (one per layer) \\
+\hline
+{\em B} & a standard vector of bias vectors (one per layer) \\
+\hline
+{\em loss} & the negative log-\/likelihood \\
+\hline
+{\em accuracy} & the accuracy \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_ad4e3600f69eecf523fb78bb9ffd4ee24}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!compute\+Loss@{compute\+Loss}}
+\index{compute\+Loss@{compute\+Loss}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{compute\+Loss}]{\setlength{\rightskip}{0pt plus 5cm}void compute\+Loss (
+\begin{DoxyParamCaption}
+\item[{const Activation\+Function \&}]{act\+\_\+func, }
+\item[{const My\+Matrix \&}]{X, }
+\item[{const My\+Vector \&}]{Y, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{W, }
+\item[{const std\+::vector$<$ My\+Vector $>$ \&}]{B, }
+\item[{const {\bf Params}}]{params, }
+\item[{double \&}]{loss, }
+\item[{double \&}]{accuracy}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_ad4e3600f69eecf523fb78bb9ffd4ee24}
+
+
+function that compute the Negative Log-\/likelihood and the accuracy of the model (cannot be used with dropout since the mask will be activated!) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em act\+\_\+func} & the reference of the activation function \\
+\hline
+{\em X} & a matrix containing the training examples \\
+\hline
+{\em Y} & a vector containing the labels of the examples \\
+\hline
+{\em W} & a standard vector of weight matrices (one per layer) \\
+\hline
+{\em B} & a standard vector of bias vectors (one per layer) \\
+\hline
+{\em params} & the parameters of the program \\
+\hline
+{\em loss} & the negative log-\/likelihood \\
+\hline
+{\em accuracy} & the accuracy \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_ab5839ec0cc5d7bcbf94b68562f365bee}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!compute\+Mc\+Error@{compute\+Mc\+Error}}
+\index{compute\+Mc\+Error@{compute\+Mc\+Error}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{compute\+Mc\+Error}]{\setlength{\rightskip}{0pt plus 5cm}void compute\+Mc\+Error (
+\begin{DoxyParamCaption}
+\item[{const My\+Matrix \&}]{out, }
+\item[{My\+Matrix \&}]{mc\+\_\+error}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_ab5839ec0cc5d7bcbf94b68562f365bee}
+
+
+Function that sample a label randomly according to the output distribution and evaluate the gradient w.\+r.\+t. to the output This function is required by the algorithm qd\+M\+C\+Nat. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & the probability distribution over the output (values returned by softmax) \\
+\hline
+{\em mc\+\_\+error} & the gradient w.\+r.\+t. to the output \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_af144ec609311b53a6c4d0cb6678932b9}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!diag\+Gradient@{diag\+Gradient}}
+\index{diag\+Gradient@{diag\+Gradient}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{diag\+Gradient}]{\setlength{\rightskip}{0pt plus 5cm}void diag\+Gradient (
+\begin{DoxyParamCaption}
+\item[{const My\+Matrix \&}]{Mii, }
+\item[{const My\+Vector \&}]{M00, }
+\item[{const My\+Matrix \&}]{d\+W, }
+\item[{const My\+Vector \&}]{d\+B, }
+\item[{My\+Matrix \&}]{qd\+\_\+d\+W, }
+\item[{My\+Vector \&}]{qd\+\_\+d\+B}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_af144ec609311b53a6c4d0cb6678932b9}
+
+
+Compute the natural gradient with the diagonal approximation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Mii} & the diagonals of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+{\em M00} & the bias of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+{\em d\+W} & the gradient w.\+r.\+t. the weights \\
+\hline
+{\em d\+B} & the gradient w.\+r.\+t. the bias \\
+\hline
+{\em qd\+\_\+d\+W} & the quasi-\/diagonal natural gradient w.\+r.\+t. the weights \\
+\hline
+{\em qd\+\_\+d\+B} & the quasi-\/diagonal natural gradient w.\+r.\+t. the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_ac56dfda8be864dadf5db85c56978171d}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!dropout@{dropout}}
+\index{dropout@{dropout}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{dropout}]{\setlength{\rightskip}{0pt plus 5cm}void dropout (
+\begin{DoxyParamCaption}
+\item[{const double}]{prob, }
+\item[{My\+Matrix \&}]{A, }
+\item[{My\+Matrix \&}]{B}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_ac56dfda8be864dadf5db85c56978171d}
+
+
+Implementation of the dropout regularization technique. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prob} & the probability of dropout \\
+\hline
+{\em A} & a matrix to regularize (n\+\_\+example X n\+\_\+unit) \\
+\hline
+{\em B} & another matrix to regularize with the same mask (n\+\_\+example X n\+\_\+unit) \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_afe6393d9948ae9a81cb1292aad353c48}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!dropout@{dropout}}
+\index{dropout@{dropout}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{dropout}]{\setlength{\rightskip}{0pt plus 5cm}void dropout (
+\begin{DoxyParamCaption}
+\item[{const double}]{prob, }
+\item[{My\+Matrix \&}]{A}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_afe6393d9948ae9a81cb1292aad353c48}
+
+
+Implementation of the dropout regularization technique. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prob} & the probability of dropout \\
+\hline
+{\em A} & a matrix to regularize (n\+\_\+example X n\+\_\+unit) \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_a99cafbd2955aafe43ad57a88f7f1db5c}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!eval\+Model@{eval\+Model}}
+\index{eval\+Model@{eval\+Model}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{eval\+Model}]{\setlength{\rightskip}{0pt plus 5cm}void eval\+Model (
+\begin{DoxyParamCaption}
+\item[{const Activation\+Function \&}]{eval\+\_\+act\+\_\+func, }
+\item[{const My\+Matrix \&}]{X\+\_\+train, }
+\item[{const My\+Matrix \&}]{Y\+\_\+train, }
+\item[{const My\+Matrix \&}]{X\+\_\+valid, }
+\item[{const My\+Matrix \&}]{Y\+\_\+valid, }
+\item[{const {\bf Params} \&}]{params, }
+\item[{std\+::vector$<$ My\+Matrix $>$}]{W\+\_\+eval, }
+\item[{std\+::vector$<$ My\+Vector $>$}]{B, }
+\item[{double \&}]{train\+\_\+loss, }
+\item[{double \&}]{train\+\_\+accuracy, }
+\item[{double \&}]{valid\+\_\+loss, }
+\item[{double \&}]{valid\+\_\+accuracy}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_a99cafbd2955aafe43ad57a88f7f1db5c}
+
+
+function that evaluate the model on the training dataset and the validation dataset 
+
+
+\begin{DoxyParams}{Parameters}
+{\em eval\+\_\+act\+\_\+func} & the reference of the activation function \\
+\hline
+{\em X\+\_\+train} & a matrix containing the training examples \\
+\hline
+{\em Y\+\_\+train} & a vector containing the labels of the training examples \\
+\hline
+{\em X\+\_\+valid} & a matrix containing the validation examples \\
+\hline
+{\em Y\+\_\+valid} & a vector containing the labels of the validation examples \\
+\hline
+{\em params} & the parameters of the program \\
+\hline
+{\em W\+\_\+eval} & a copy of the standard vector of weight matrices (one per layer) \\
+\hline
+{\em B} & a standard vector of bias vectors (one per layer) \\
+\hline
+{\em train\+\_\+loss} & the negative log-\/likelihood on the training set \\
+\hline
+{\em train\+\_\+accuracy} & the accuracy on the training set \\
+\hline
+{\em valid\+\_\+loss} & the negative log-\/likelihood on the validation set \\
+\hline
+{\em valid\+\_\+accuracy} & the accuracy on the validation set \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_a333e03b7cdb8f33e9619edf27f56d6cb}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!fprop@{fprop}}
+\index{fprop@{fprop}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{fprop}]{\setlength{\rightskip}{0pt plus 5cm}void fprop (
+\begin{DoxyParamCaption}
+\item[{const bool}]{dropout\+\_\+flag, }
+\item[{const double}]{dropout\+\_\+prob, }
+\item[{const Activation\+Function \&}]{act\+\_\+func, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{W, }
+\item[{const std\+::vector$<$ My\+Vector $>$ \&}]{B, }
+\item[{const My\+Matrix \&}]{X\+\_\+batch, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{Z, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{A, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{d\+A}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_a333e03b7cdb8f33e9619edf27f56d6cb}
+
+
+Implementation of the forward propagation algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dropout\+\_\+flag} & the flag for activating dropout regularization \\
+\hline
+{\em dropout\+\_\+prob} & the probability of dropout (dropout\+\_\+flag must be true) \\
+\hline
+{\em act\+\_\+func} & the reference of the activation function \\
+\hline
+{\em W} & a standard vector of weight matrices (one per layer) \\
+\hline
+{\em B} & a standard vector of bias vectors (one per layer) \\
+\hline
+{\em X\+\_\+batch} & a matrix containing the training examples of the current minibatch \\
+\hline
+{\em Z} & a standard vector of pre-\/activation values (one per layer) \\
+\hline
+{\em A} & a standard vector of activation values (one per layer) \\
+\hline
+{\em d\+A} & a standard vector of the derivatives of the activation values (one per layer) \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_a2a07778f5ff97c5d5581276d663ede6e}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!init\+Network@{init\+Network}}
+\index{init\+Network@{init\+Network}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{init\+Network}]{\setlength{\rightskip}{0pt plus 5cm}int init\+Network (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ unsigned $>$ \&}]{nn\+\_\+arch, }
+\item[{const std\+::string}]{act\+\_\+func, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{W, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{B}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_a2a07778f5ff97c5d5581276d663ede6e}
+
+
+Initialize the parameters of the Neural Network computational graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nn\+\_\+arch} & number of activation units for each layer \\
+\hline
+{\em act\+\_\+func} & string representing the activation function \\
+\hline
+{\em W} & a standard vector of weight matrices (one per layer) \\
+\hline
+{\em B} & a standard vector of bias vectors (one per layer) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of parameters 
+\end{DoxyReturn}
+\hypertarget{nn__ops_8hpp_a90b8525c0edded9e3420dc56dbb9332f}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!init\+Weight@{init\+Weight}}
+\index{init\+Weight@{init\+Weight}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{init\+Weight}]{\setlength{\rightskip}{0pt plus 5cm}void init\+Weight (
+\begin{DoxyParamCaption}
+\item[{const unsigned}]{n\+\_\+act0, }
+\item[{const unsigned}]{n\+\_\+act1, }
+\item[{const double}]{sigma, }
+\item[{My\+Matrix \&}]{W}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_a90b8525c0edded9e3420dc56dbb9332f}
+
+
+Initialize the weights of a layer with a reweighted normal noise. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+\_\+act0} & number of input units \\
+\hline
+{\em n\+\_\+act1} & number of output units \\
+\hline
+{\em sigma} & stddev of the normal noise \\
+\hline
+{\em W} & weight matrix returned by the function \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_a1ee99de11ae8d8f50b32c2037ffd1d1b}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!logistic@{logistic}}
+\index{logistic@{logistic}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{logistic}]{\setlength{\rightskip}{0pt plus 5cm}void logistic (
+\begin{DoxyParamCaption}
+\item[{const bool}]{deriv\+\_\+flag, }
+\item[{const My\+Matrix \&}]{z, }
+\item[{My\+Matrix \&}]{a, }
+\item[{My\+Matrix \&}]{da}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_a1ee99de11ae8d8f50b32c2037ffd1d1b}
+
+
+Implementation of the logistic function and its derivative. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em deriv\+\_\+flag} & a flag for computing the derivative at the same time \\
+\hline
+{\em z} & the pre-\/activation matrix (n\+\_\+example X n\+\_\+unit) \\
+\hline
+{\em a} & the activation matrix (n\+\_\+example X n\+\_\+unit) \\
+\hline
+{\em da} & the derivative activation matrix (n\+\_\+example X n\+\_\+unit) \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_aa8e7c94ef2b705a126e52d0ea2fa9901}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!my\+\_\+tanh@{my\+\_\+tanh}}
+\index{my\+\_\+tanh@{my\+\_\+tanh}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{my\+\_\+tanh}]{\setlength{\rightskip}{0pt plus 5cm}void my\+\_\+tanh (
+\begin{DoxyParamCaption}
+\item[{const bool}]{deriv\+\_\+flag, }
+\item[{const My\+Matrix \&}]{z, }
+\item[{My\+Matrix \&}]{a, }
+\item[{My\+Matrix \&}]{da}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_aa8e7c94ef2b705a126e52d0ea2fa9901}
+
+
+Implementation of the tanh function and its derivative. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em deriv\+\_\+flag} & a flag for computing the derivative at the same time \\
+\hline
+{\em z} & the pre-\/activation matrix (n\+\_\+example X n\+\_\+unit) \\
+\hline
+{\em a} & the activation matrix (n\+\_\+example X n\+\_\+unit) \\
+\hline
+{\em da} & the derivative activation matrix (n\+\_\+example X n\+\_\+unit) \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_aa315c58532f165c406aa803c1524a9a8}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!qd\+Bpm\+Bprop@{qd\+Bpm\+Bprop}}
+\index{qd\+Bpm\+Bprop@{qd\+Bpm\+Bprop}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{qd\+Bpm\+Bprop}]{\setlength{\rightskip}{0pt plus 5cm}void qd\+Bpm\+Bprop (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{W, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{d\+A, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{bp\+\_\+grad\+B}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_aa315c58532f165c406aa803c1524a9a8}
+
+
+Implementation of the metric backpropagation algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em W} & a standard vector of weight matrices (one per layer) \\
+\hline
+{\em d\+A} & a standard vector of the derivatives of the activation values (one per layer) \\
+\hline
+{\em bp\+\_\+grad\+B} & a standard vector of the backpropagated metric (one per layer) \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_a5aaf33307c7448b0ed1991deafc24db1}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!qd\+Gradient@{qd\+Gradient}}
+\index{qd\+Gradient@{qd\+Gradient}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{qd\+Gradient}]{\setlength{\rightskip}{0pt plus 5cm}void qd\+Gradient (
+\begin{DoxyParamCaption}
+\item[{const My\+Matrix \&}]{Mii, }
+\item[{const My\+Matrix \&}]{M0i, }
+\item[{const My\+Vector \&}]{M00, }
+\item[{const My\+Matrix \&}]{d\+W, }
+\item[{const My\+Vector \&}]{d\+B, }
+\item[{My\+Matrix \&}]{qd\+\_\+d\+W, }
+\item[{My\+Vector \&}]{qd\+\_\+d\+B}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_a5aaf33307c7448b0ed1991deafc24db1}
+
+
+Compute the natural gradient with the quasi-\/diagonal approximation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Mii} & the diagonals of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+{\em Mi0} & the weights time the bias (first line) of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+{\em M00} & the bias of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+{\em d\+W} & the gradient w.\+r.\+t. the weights \\
+\hline
+{\em d\+B} & the gradient w.\+r.\+t. the bias \\
+\hline
+{\em qd\+\_\+d\+W} & the quasi-\/diagonal natural gradient w.\+r.\+t. the weights \\
+\hline
+{\em qd\+\_\+d\+B} & the quasi-\/diagonal natural gradient w.\+r.\+t. the bias \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_af47e86a1783f4c04ee25301f3ec37866}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!relu@{relu}}
+\index{relu@{relu}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{relu}]{\setlength{\rightskip}{0pt plus 5cm}void relu (
+\begin{DoxyParamCaption}
+\item[{const bool}]{deriv\+\_\+flag, }
+\item[{const My\+Matrix \&}]{z, }
+\item[{My\+Matrix \&}]{a, }
+\item[{My\+Matrix \&}]{da}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_af47e86a1783f4c04ee25301f3ec37866}
+
+
+Implementation of the rectified linear unit (Re\+L\+U) function and its derivative. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em deriv\+\_\+flag} & a flag for computing the derivative at the same time \\
+\hline
+{\em z} & the pre-\/activation matrix (n\+\_\+example X n\+\_\+unit) \\
+\hline
+{\em a} & the activation matrix (n\+\_\+example X n\+\_\+unit) \\
+\hline
+{\em da} & the derivative activation matrix (n\+\_\+example X n\+\_\+unit) \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_a22f109ce3d23796de9d34fb9eee73040}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!sign\+Func@{sign\+Func}}
+\index{sign\+Func@{sign\+Func}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{sign\+Func}]{\setlength{\rightskip}{0pt plus 5cm}double sign\+Func (
+\begin{DoxyParamCaption}
+\item[{double}]{x}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_a22f109ce3d23796de9d34fb9eee73040}
+
+
+Implementation of the sign function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & an input value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the sign of x 
+\end{DoxyReturn}
+\hypertarget{nn__ops_8hpp_a4c86f2557fe76d7b0ca7c5111eb7927b}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!softmax@{softmax}}
+\index{softmax@{softmax}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{softmax}]{\setlength{\rightskip}{0pt plus 5cm}void softmax (
+\begin{DoxyParamCaption}
+\item[{const My\+Matrix \&}]{a, }
+\item[{My\+Matrix \&}]{out}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_a4c86f2557fe76d7b0ca7c5111eb7927b}
+
+
+Implementation of the softmax function Take a matrix (n\+\_\+example X n\+\_\+class) of values and return a matrix (n\+\_\+example X n\+\_\+class) where each line is a probability distribution over the classes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & the pre-\/activation values \\
+\hline
+{\em out} & the probability distribution \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_a6ceeb10733d64ab2587e136e884c2ec8}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!sqrt\+Func@{sqrt\+Func}}
+\index{sqrt\+Func@{sqrt\+Func}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{sqrt\+Func}]{\setlength{\rightskip}{0pt plus 5cm}double sqrt\+Func (
+\begin{DoxyParamCaption}
+\item[{double}]{x}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_a6ceeb10733d64ab2587e136e884c2ec8}
+
+
+Implementation of the square-\/root function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the pre-\/activation value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the square-\/root of x 
+\end{DoxyReturn}
+\hypertarget{nn__ops_8hpp_a03a2f1c37574a2bc61630b6e5bf86dcf}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!square\+Func@{square\+Func}}
+\index{square\+Func@{square\+Func}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{square\+Func}]{\setlength{\rightskip}{0pt plus 5cm}double square\+Func (
+\begin{DoxyParamCaption}
+\item[{double}]{x}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_a03a2f1c37574a2bc61630b6e5bf86dcf}
+
+
+Implementation of the square function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the pre-\/activation value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the square of x 
+\end{DoxyReturn}
+\hypertarget{nn__ops_8hpp_a6bac3899a024aa93b77e99e169f1e86c}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!sum\+Cst\+Func@{sum\+Cst\+Func}}
+\index{sum\+Cst\+Func@{sum\+Cst\+Func}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{sum\+Cst\+Func}]{\setlength{\rightskip}{0pt plus 5cm}double sum\+Cst\+Func (
+\begin{DoxyParamCaption}
+\item[{double}]{x, }
+\item[{double}]{cst}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_a6bac3899a024aa93b77e99e169f1e86c}
+
+
+Implementation of the translation function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the pre-\/activation value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+x plus a constant 
+\end{DoxyReturn}
+\hypertarget{nn__ops_8hpp_ac8a4ddb1d085a6e8f288882dc5e2273f}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!update@{update}}
+\index{update@{update}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void update (
+\begin{DoxyParamCaption}
+\item[{const double}]{eta, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{grad\+B, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{A, }
+\item[{const My\+Matrix \&}]{X\+\_\+batch, }
+\item[{const std\+::string}]{regularizer, }
+\item[{const double}]{lambda, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{W, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{B}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_ac8a4ddb1d085a6e8f288882dc5e2273f}
+
+
+Implementation of the update function of the gradient descent algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em eta} & the gradient descent step-\/size \\
+\hline
+{\em grad\+B} & a standard vector of the gradient w.\+r.\+t. the pre-\/activation values (one per layer) \\
+\hline
+{\em A} & a standard vector of activation values (one per layer) \\
+\hline
+{\em X\+\_\+batch} & a matrix containing the training examples of the current minibatch \\
+\hline
+{\em regularizer} & the string of the norm regularizer (L1 or L2) \\
+\hline
+{\em lambda} & the amplitude of the regularization term \\
+\hline
+{\em W} & a standard vector of weight matrices (one per layer) \\
+\hline
+{\em B} & a standard vector of bias vectors (one per layer) \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_a5a372ad6a43f1c26470b5125125986ad}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!update@{update}}
+\index{update@{update}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void update (
+\begin{DoxyParamCaption}
+\item[{const double}]{eta, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{grad\+B, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{A, }
+\item[{const My\+Matrix \&}]{X\+\_\+batch, }
+\item[{const std\+::string}]{regularizer, }
+\item[{const double}]{lambda, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{W, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{B, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{Mii, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{M0i, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{M00}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_a5a372ad6a43f1c26470b5125125986ad}
+
+
+Implementation of the update function of the quasi-\/diagonal natural gradient descent algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em eta} & the gradient descent step-\/size \\
+\hline
+{\em grad\+B} & a standard vector of the gradient w.\+r.\+t. the pre-\/activation values (one per layer) \\
+\hline
+{\em A} & a standard vector of activation values (one per layer) \\
+\hline
+{\em X\+\_\+batch} & a matrix containing the training examples of the current minibatch \\
+\hline
+{\em regularizer} & the string of the norm regularizer (L1 or L2) \\
+\hline
+{\em lambda} & the amplitude of the regularization term \\
+\hline
+{\em W} & a standard vector of weight matrices (one per layer) \\
+\hline
+{\em B} & a standard vector of bias vectors (one per layer) \\
+\hline
+{\em Mii} & the diagonals of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+{\em Mi0} & the weights time the bias (first line) of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+{\em M00} & the bias of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_a2be07c086229dee20135008288130b0c}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!update@{update}}
+\index{update@{update}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void update (
+\begin{DoxyParamCaption}
+\item[{const double}]{eta, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{grad\+B, }
+\item[{const std\+::vector$<$ My\+Matrix $>$ \&}]{A, }
+\item[{const My\+Matrix \&}]{X\+\_\+batch, }
+\item[{const std\+::string}]{regularizer, }
+\item[{const double}]{lambda, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{W, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{B, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{Mii, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{M00}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_a2be07c086229dee20135008288130b0c}
+
+
+Implementation of the update function of the diagonal natural gradient descent algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em eta} & the gradient descent step-\/size \\
+\hline
+{\em grad\+B} & a standard vector of the gradient w.\+r.\+t. the pre-\/activation values (one per layer) \\
+\hline
+{\em A} & a standard vector of activation values (one per layer) \\
+\hline
+{\em X\+\_\+batch} & a matrix containing the training examples of the current minibatch \\
+\hline
+{\em regularizer} & the string of the norm regularizer (L1 or L2) \\
+\hline
+{\em lambda} & the amplitude of the regularization term \\
+\hline
+{\em W} & a standard vector of weight matrices (one per layer) \\
+\hline
+{\em B} & a standard vector of bias vectors (one per layer) \\
+\hline
+{\em Mii} & the diagonals of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+{\em M00} & the bias of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_a8b089ff4f32d95bcacc9a7cfa7bc1ef6}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!update\+Metric@{update\+Metric}}
+\index{update\+Metric@{update\+Metric}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{update\+Metric}]{\setlength{\rightskip}{0pt plus 5cm}void update\+Metric (
+\begin{DoxyParamCaption}
+\item[{const bool}]{init\+\_\+flag, }
+\item[{const double}]{gamma, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{Mii, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{M0i, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{M00, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{p\+Mii, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{p\+M0i, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{p\+M00}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_a8b089ff4f32d95bcacc9a7cfa7bc1ef6}
+
+
+Update the quasi-\/diagonal approximation of the metric with an exponential moving average. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em init\+\_\+flag} & a flag for initializing the exponential moving average \\
+\hline
+{\em gamma} & the coefficient of the exponential moving average \\
+\hline
+{\em Mii} & a standard vector of the diagonals of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+{\em Mi0} & a standard vector of the weights time the bias (first line) of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+{\em M00} & a standard vector of the bias of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+{\em p\+Mii} & a standard vector of the previous exponential moving average of Mii \\
+\hline
+{\em p\+Mi0} & a standard vector of the previous exponential moving average of M0i \\
+\hline
+{\em p\+M00} & a standard vector of the previous exponential moving average of M00 \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_afc59d7c69fc14a16d2fb47f309f3f63b}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!update\+Metric@{update\+Metric}}
+\index{update\+Metric@{update\+Metric}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{update\+Metric}]{\setlength{\rightskip}{0pt plus 5cm}void update\+Metric (
+\begin{DoxyParamCaption}
+\item[{const bool}]{init\+\_\+flag, }
+\item[{const double}]{gamma, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{Mii, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{M00, }
+\item[{std\+::vector$<$ My\+Matrix $>$ \&}]{p\+Mii, }
+\item[{std\+::vector$<$ My\+Vector $>$ \&}]{p\+M00}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_afc59d7c69fc14a16d2fb47f309f3f63b}
+
+
+Update the diagonal approximation of the metric with an exponential moving average. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em init\+\_\+flag} & a flag for initializing the exponential moving average \\
+\hline
+{\em gamma} & the coefficient of the exponential moving average \\
+\hline
+{\em Mii} & a standard vector of the diagonals of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+{\em M00} & a standard vector of the bias of the block sub-\/matrices of the Riemannian metric (one per layer) \\
+\hline
+{\em p\+Mii} & a standard vector of the previous exponential moving average of Mii \\
+\hline
+{\em p\+M00} & a standard vector of the previous exponential moving average of M00 \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_aaa5dfcccaa4f859b162005465984f40e}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!update\+Param@{update\+Param}}
+\index{update\+Param@{update\+Param}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{update\+Param}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void update\+Param (
+\begin{DoxyParamCaption}
+\item[{const double}]{eta, }
+\item[{const std\+::string}]{regularizer, }
+\item[{const double}]{lambda, }
+\item[{const T \&}]{dparams, }
+\item[{T \&}]{params}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_aaa5dfcccaa4f859b162005465984f40e}
+
+
+Templated function for updating matrices or vectors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em eta} & the gradient descent step-\/size \\
+\hline
+{\em regularizer} & the string of the norm regularizer (L1 or L2) \\
+\hline
+{\em lambda} & the amplitude of the regularization term \\
+\hline
+{\em dparams} & a matrix/vector containing the updates \\
+\hline
+{\em params} & a matrix/vector to be updated \\
+\hline
+\end{DoxyParams}
+\hypertarget{nn__ops_8hpp_ac98a75118cb5c283016ee1d3009e4591}{}\index{nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}!update\+Stepsize@{update\+Stepsize}}
+\index{update\+Stepsize@{update\+Stepsize}!nn\+\_\+ops.\+hpp@{nn\+\_\+ops.\+hpp}}
+\subsubsection[{update\+Stepsize}]{\setlength{\rightskip}{0pt plus 5cm}void update\+Stepsize (
+\begin{DoxyParamCaption}
+\item[{const unsigned}]{t, }
+\item[{const double}]{init\+\_\+eta, }
+\item[{double \&}]{eta}
+\end{DoxyParamCaption}
+)}\label{nn__ops_8hpp_ac98a75118cb5c283016ee1d3009e4591}
+
+
+simple implementation of a decreasing step-\/size for ensuring convergence 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & number of iterations \\
+\hline
+{\em init\+\_\+eta} & initial step-\/size \\
+\hline
+{\em eta} & adjusted step-\/size \\
+\hline
+\end{DoxyParams}
